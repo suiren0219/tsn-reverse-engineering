@@ -1,0 +1,56 @@
+# Gradle
+.gradle/
+build/
+app/build/
+captures/
+.externalNativeBuild/
+.cxx/
+
+# 本地 SDK 路径，因机器而异，不应提交
+local.properties
+
+# IDE
+.idea/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# macOS / Windows
+.DS_Store
+Thumbs.db
+
+# 签名材料：绝不入库
+*.jks
+*.keystore
+keystore.properties
+
+# 构建产物与日志
+*.apk
+*.aab
+*.ap_
+*.dex
+*.class
+*.log
+
+# 抓包导出：原始 HAR 含真实 token/Cookie/学号，绝不入库
+*.har
+*.pcap
+*.pcapng
+
+# 反编译产物：含第三方版权代码，绝不入库
+rev_*/
+jadx_*
+unshielded/
+fuckrun_src/
+tsn_py/
+
+# 分析对象的原始 APK / 样本，一律不提交
+*.apk
+*.apk.*
+*.zip
+*.tar.gz
+
+# Python 评测台缓存
+__pycache__/
+*.pyc
