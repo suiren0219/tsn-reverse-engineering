@@ -367,12 +367,12 @@ object Findings {
             durability = Durability.STRUCTURAL,
             mechanism = """
                 一次冷启动的完整请求链（按真实时间）：
-                  +0.0s  h.tsnkj.com              静态资源（H5 页面）
+                  +0.0s  h5.example.com              静态资源（H5 页面）
                   +2.8s  cdn.dcloud.net.cn        uni-app 资源
                   +3.1s  sdk-report.beizi.biz     倍推 SDK 上报（明文 HTTP）
-                  +7.3s  a.sxstczx.com            OAuth token 刷新（明文 HTTP）
+                  +7.3s  oauth.example.com            OAuth token 刷新（明文 HTTP）
                   +7.5s  heytapmobi.com           app-open-auth（HTTPS，加密体）
-                  +7.8s  h.tsnkj.com/?school=…    H5 主文档
+                  +7.8s  h5.example.com/?school=…    H5 主文档
                 关键事实：
                   1) 跑步功能主体是 H5，由 WebView 加载，请求头带
                      X-Requested-With: com.bxkj.student

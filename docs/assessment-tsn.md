@@ -129,8 +129,8 @@ native 直读使这类 hook 完全失效。FuckTSN 那类模块 hook 的是 Java
 启动链路 18 条请求，其中 6 条明文 HTTP（倍推 SDK 5 条 + OAuth 1 条）：
 
 ```
- +7.3s  HTTP   a.sxstczx.com   OAuth token 刷新（refresh_token 在 URL query）
- +7.8s  HTTPS  h.tsnkj.com     H5 主文档（uni-app + Vue）
+ +7.3s  HTTP   oauth.example.com   OAuth token 刷新（refresh_token 在 URL query）
+ +7.8s  HTTPS  h5.example.com     H5 主文档（uni-app + Vue）
 ```
 
 跑步功能主体是 H5，请求头带 `X-Requested-With: com.bxkj.student`。
