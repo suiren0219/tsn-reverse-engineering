@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- 档二需要定位与计步；档一全部检查不依赖任何权限 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
+
+    <!-- 档一第 9 项需要列出已安装应用。Android 11+ 需声明 QUERY_ALL_PACKAGES
+         或用 <queries> 精确声明目标包名。若不需要黑名单检查，可去掉本行。 -->
+    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+        tools:ignore="QueryAllPackagesPermission" />
+
+    <queries>
+        <package android:name="io.github.zhaoyuxiangyyds_lab.anydoor" />
+        <package android:name="com.yinshibai.location" />
+        <package android:name="com.pansoul.fucktsn" />
+        <package android:name="com.uy_li.runhook" />
+    </queries>
+
+    <application
+        android:label="位置真实性检测"
+        android:theme="@style/Theme.SpoofDet"
+        android:allowBackup="true">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:screenOrientation="portrait">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <!-- 导出日志用：把 cache/reports 下的 txt 以 content:// 交给分享面板，
+             不需要任何存储权限 -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.spoofdet.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+</manifest>

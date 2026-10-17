@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+      使用框架级 DeviceDefault：系统会在 values-night 下自动套用深色变体。
+      注意不能写 Theme.DeviceDefault.DayNight（那是 AppCompat 的命名，框架层不存在）。
+      windowLightStatusBar 在 values-night 中覆盖为 false。
+    -->
+    <style name="Theme.SpoofDet" parent="android:Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowBackground">?android:attr/colorBackground</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+</resources>

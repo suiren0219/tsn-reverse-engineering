@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<paths>
+    <!-- 报告写在 cache/reports/ 下，分享时按需授权读 -->
+    <cache-path name="reports" path="reports/" />
+</paths>

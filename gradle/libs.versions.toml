@@ -1,0 +1,14 @@
+[versions]
+# AGP 8.9.1+ 是 MIUIX 0.8.8 的硬性要求（其 AAR 元数据声明需 compileSdk 36）
+agp = "8.9.1"
+# Kotlin 2.3.20：MIUIX 0.8.8 以 Kotlin 2.3.0 编译，
+# 低于此版本会报 "binary version of its metadata is 2.3.0, expected 2.0.0"
+kotlin = "2.3.20"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version = "1.15.0" }
+
+[plugins]
+androidApplication = { id = "com.android.application", version.ref = "agp" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+kotlinCompose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
