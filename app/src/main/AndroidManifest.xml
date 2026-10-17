@@ -7,8 +7,9 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION" />
 
-    <!-- 档一第 9 项需要列出已安装应用。Android 11+ 需声明 QUERY_ALL_PACKAGES
-         或用 <queries> 精确声明目标包名。若不需要黑名单检查，可去掉本行。 -->
+    <!-- 档一的 t1_mock_apps（模拟位置授权应用）与 t1_blacklist（已知伪造工具包名）
+         需要枚举已安装应用。Android 11+ 需声明 QUERY_ALL_PACKAGES 或 <queries>；
+         实际用的是后者 + 逐个 getPackageInfo 的双路查询。 -->
     <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
 
@@ -17,17 +18,8 @@
         <package android:name="com.yinshibai.location" />
         <package android:name="com.pansoul.fucktsn" />
         <package android:name="com.uy_li.runhook" />
-        <!-- 以下对应 Tier1Checks.INTERVENTION_MODULES 的其余条目。
-             漏声明任何一个，getInstalledPackages 在 Android 11+ 上就看不到它，
-             检查会静默返回"未发现"——典型的假阴性。 -->
         <package android:name="com.theappguruz.sensor" />
         <package android:name="com.blogspot.newapphorizons.fakegps" />
-        <package android:name="com.lerist.locationmock" />
-        <package android:name="com.gaurav.gmock" />
-        <package android:name="com.incorporateapps.fakegps" />
-        <package android:name="com.lexa.fakegps" />
-        <package android:name="com.rarnu.rootselect" />
-        <package android:name="eu.chainfire.supersu" />
     </queries>
 
     <application

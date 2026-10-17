@@ -107,7 +107,7 @@ class DetectionController(context: Context) {
      *
      * 目的不是给用户导出（那仍是显式的「点此导出报告」），而是让检测结果
      * 可被事后核查：UI 自动化抓不到时，adb run-as 读文件一样能拿到
-     * 全部 21 项的完整结论。report 目录本就是 LogExporter 写分享文件的地方，
+     * 全部结果项的完整结论。report 目录本就是 LogExporter 写分享文件的地方，
      * 这里只是复用同一份内容，不引入新的存储位置。
      */
     private fun autoSaveReport() {

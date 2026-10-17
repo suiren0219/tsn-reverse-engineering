@@ -290,7 +290,7 @@ object Findings {
                 以及 Location.isFromMockProvider()（还加了调用栈过滤，仅当调用方是
                 com.bxkj.student 时返回 false）。
             """.trimIndent(),
-            observable = "这十条即被测方原有的检测能力边界，对应本 demo 的档一实现",
+            observable = "这十条即被测方原有的检测能力边界，对应本 demo 的档一 9 项实现",
             checkId = "t1_blacklist"
         ),
 
@@ -329,9 +329,9 @@ object Findings {
                      proxy / secure_dns_mode / use_local_ipv6
                    说明它在判断流量是否被导走；抓包与改服务端返回都依赖这一条。
             """.trimIndent(),
-            observable = "端侧：次要用户 / 工作资料、存储路径异常挂载、活动设备管理员、" +
-                    "系统代理属性、TYPE_VPN、虚拟网卡名",
-            checkId = "t1_vpn_proxy"
+            observable = "这两条是体适能自身的运行时行为，不构成可直接复刻的端侧检查项：" +
+                    "普通 App 进程读不到对方的存储与网络配置。列为观察记录，不进入档一计数",
+            checkId = null
         ),
 
         Finding(
@@ -384,9 +384,9 @@ object Findings {
                 推论：原生层 Location 伪造只骗得过系统 API，骗不过服务端
                 在 H5 响应里下发的校验参数；H5 响应链是独立攻击面。
             """.trimIndent(),
-            observable = "端侧：用户 CA 证书数量、已安装的网络分析工具、" +
-                    "已知明文端点、系统 WebView 版本",
-            checkId = "t1_response_tampering"
+            observable = "抓包结论，不是端侧可检项：普通 App 无法观测对方 H5 响应是否被改写。" +
+                    "该条用于解释「原生定位伪造不足以覆盖全部校验链」，不进入档一计数",
+            checkId = null
         )
     )
 
