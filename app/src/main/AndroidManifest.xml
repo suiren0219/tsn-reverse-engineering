@@ -17,6 +17,17 @@
         <package android:name="com.yinshibai.location" />
         <package android:name="com.pansoul.fucktsn" />
         <package android:name="com.uy_li.runhook" />
+        <!-- 以下对应 Tier1Checks.INTERVENTION_MODULES 的其余条目。
+             漏声明任何一个，getInstalledPackages 在 Android 11+ 上就看不到它，
+             检查会静默返回"未发现"——典型的假阴性。 -->
+        <package android:name="com.theappguruz.sensor" />
+        <package android:name="com.blogspot.newapphorizons.fakegps" />
+        <package android:name="com.lerist.locationmock" />
+        <package android:name="com.gaurav.gmock" />
+        <package android:name="com.incorporateapps.fakegps" />
+        <package android:name="com.lexa.fakegps" />
+        <package android:name="com.rarnu.rootselect" />
+        <package android:name="eu.chainfire.supersu" />
     </queries>
 
     <application

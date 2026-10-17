@@ -99,6 +99,27 @@ class DetectionController(context: Context) {
         publish(tier1 + tier3)
         _phase.value = Phase.DONE
         summarize()
+        autoSaveReport()
+    }
+
+    /**
+     * 每轮检测结束后自动落一份报告到 cache/reports/。
+     *
+     * 目的不是给用户导出（那仍是显式的「点此导出报告」），而是让检测结果
+     * 可被事后核查：UI 自动化抓不到时，adb run-as 读文件一样能拿到
+     * 全部 21 项的完整结论。report 目录本就是 LogExporter 写分享文件的地方，
+     * 这里只是复用同一份内容，不引入新的存储位置。
+     */
+    private fun autoSaveReport() {
+        runCatching {
+            val content = com.example.spoofdet.export.LogExporter.buildReport(
+                results = _results.value,
+                logs = _logs.value,
+                deviceSummary = deviceSummary(),
+                appVersion = appVersion()
+            )
+            com.example.spoofdet.export.LogExporter.writeToCache(appContext, content)
+        }
     }
 
     /**

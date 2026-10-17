@@ -32,3 +32,8 @@ keystore.properties
 *.dex
 *.class
 *.log
+
+# 抓包导出：原始 HAR 含真实 token/Cookie/学号，绝不入库
+*.har
+*.pcap
+*.pcapng

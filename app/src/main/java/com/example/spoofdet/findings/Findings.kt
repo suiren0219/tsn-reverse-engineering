@@ -6,10 +6,12 @@ package com.example.spoofdet.findings
  * 每条发现都来自对具体样本的静态分析，并给出**可被第三方 App 观测到的痕迹**以及
  * 对应的检测项 id（与 checks 包里的实现一一对应）。
  *
- * 样本与来源：
+ * 样本与来源（按 APK 文件名标注，均已核对包名）：
  *   [A] base.apk        io.github.zhaoyuxiangyyds_lab.anydoor  1.4.4   （Xposed 模块，未加壳）
  *   [B] base(5).apk     com.yinshibai.location                2.1.4   （未加壳）
- *   [C] base(4).apk     com.pansoul.fucktsn                   2.0.18  （Xposed 模块，未加壳）
+ *   [C] base(4).apk     com.bxkj.student + com.pansoul.fucktsn
+ *                      （体适能，且同包内打包了 fucktsn 的 15 个 hook；
+ *                        体适能自身检测类已被加固混淆为 p0/l1 等短包名）
  *   [D] base(2).apk     com.bxkj.student                      2.0.24  （梆梆+360 加固，静态不可解）
  *
  * 说明：本文件只记录"对方留下了什么可观测痕迹"，不含任何绕过方法。
@@ -289,7 +291,7 @@ object Findings {
                 com.bxkj.student 时返回 false）。
             """.trimIndent(),
             observable = "这十条即被测方原有的检测能力边界，对应本 demo 的档一实现",
-            checkId = "t1_all"
+            checkId = "t1_blacklist"
         ),
 
         Finding(
@@ -310,6 +312,81 @@ object Findings {
             observable = "服务端侧：同一账号的设备指纹变更历史、同一指纹被多账号复用、" +
                     "Build 字段与其它设备特征（屏幕/CPU/运营商）的矛盾",
             checkId = null
+        ),
+
+        Finding(
+            id = "C3",
+            title = "运行时日志暴露的两类自检手段（装包运行后读出）",
+            source = "base(4).apk（com.bxkj.student）运行时日志",
+            durability = Durability.STRUCTURAL,
+            mechanism = """
+                装包启动后从 logcat 读到的两类信号：
+                1) 反复出现
+                     "A resource failed to call CursorWrapperInner.close"
+                   说明它用 CursorWrapper 接管 SharedPreferences / SQLite 的
+                   读取路径并逐行校验——本地数据防篡改的典型手法。
+                2) native 网络组件（日志 tag AegonNative）启动即读
+                     proxy / secure_dns_mode / use_local_ipv6
+                   说明它在判断流量是否被导走；抓包与改服务端返回都依赖这一条。
+            """.trimIndent(),
+            observable = "端侧：次要用户 / 工作资料、存储路径异常挂载、活动设备管理员、" +
+                    "系统代理属性、TYPE_VPN、虚拟网卡名",
+            checkId = "t1_vpn_proxy"
+        ),
+
+        Finding(
+            id = "C4",
+            title = "合体包内 fucktsn 模块的字符串特征可被扫描",
+            source = "base(4).apk（含 com.pansoul.fucktsn）",
+            durability = Durability.VERSION,
+            mechanism = """
+                base(4).apk 不是纯体适能：它的 classes.dex 里同时打包了
+                com/pansoul/fucktsn/ 整个包（MainHook + hooks/ 下的 15 个
+                AccountQuickSelectHook 内部类）。dex 中这些字符串的命中次数：
+                  Xposed              ×5
+                  isFromMockProvider  ×4
+                  Magisk              ×4 / magisk ×1
+                  TracerPid           ×4
+                  root                ×4
+                  frida-server        ×1
+                IXposedHookLoadPackage 与 XC_MethodHook.MethodHookParam 的类型
+                描述符也在常量池中，说明它以 Xposed API 为骨架。
+                注意体适能自身的检测类（com.bxkj.student.v2.common.utils.safe.*）
+                在 dex 中已不可见——那些类名只存在于 fucktsn 的 hook 目标字符串里，
+                真实实现被加固混淆成 p0 / l1 之类的短包名。
+            """.trimIndent(),
+            observable = "端侧：已安装应用的 dex / native 中扫描 hook 框架特征字符串，" +
+                    "命中即说明设备上存在可干预其它 App 的模块",
+            checkId = "t1_hook_framework"
+        ),
+
+        Finding(
+            id = "C5",
+            title = "启动抓包：位置校验链横跨原生与 H5 两层",
+            source = "ProxyPin 抓包导出（18 条，全部属于 com.bxkj.student）",
+            durability = Durability.STRUCTURAL,
+            mechanism = """
+                一次冷启动的完整请求链（按真实时间）：
+                  +0.0s  h.tsnkj.com              静态资源（H5 页面）
+                  +2.8s  cdn.dcloud.net.cn        uni-app 资源
+                  +3.1s  sdk-report.beizi.biz     倍推 SDK 上报（明文 HTTP）
+                  +7.3s  a.sxstczx.com            OAuth token 刷新（明文 HTTP）
+                  +7.5s  heytapmobi.com           app-open-auth（HTTPS，加密体）
+                  +7.8s  h.tsnkj.com/?school=…    H5 主文档
+                关键事实：
+                  1) 跑步功能主体是 H5，由 WebView 加载，请求头带
+                     X-Requested-With: com.bxkj.student
+                  2) OAuth 走明文 HTTP，refresh_token 在 URL query，
+                     响应是未加密 JSON，含 access_token / refresh_token /
+                     user_id / 学号 / "license":"made by tsn"
+                  3) hookOkHttpResponse 出现在 fucktsn 的 hook 清单中，
+                     说明位置数据经 HTTP 响应传递
+                推论：原生层 Location 伪造只骗得过系统 API，骗不过服务端
+                在 H5 响应里下发的校验参数；H5 响应链是独立攻击面。
+            """.trimIndent(),
+            observable = "端侧：用户 CA 证书数量、已安装的网络分析工具、" +
+                    "已知明文端点、系统 WebView 版本",
+            checkId = "t1_response_tampering"
         )
     )
 

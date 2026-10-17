@@ -109,6 +109,23 @@ object LogExporter {
     }
 
     /**
+     * 只写文件，不唤起分享面板。
+     *
+     * 供检测结束后的自动落盘使用：同一份内容、同一个目录，
+     * 区别是不打扰用户，也不需要 Activity 引用。
+     * 失败时记日志但不抛出——自动落盘失败不该影响检测主流程。
+     */
+    fun writeToCache(context: Context, content: String): File? = try {
+        val dir = File(context.cacheDir, "reports").apply { mkdirs() }
+        File(dir, "auto-${FILE_TIME.format(Date())}.txt").also {
+            it.writeText(content, Charsets.UTF_8)
+        }
+    } catch (t: Throwable) {
+        Log.w(TAG, "自动落盘报告失败", t)
+        null
+    }
+
+    /**
      * 写缓存文件并唤起分享面板。
      * 任何一步失败都返回具体原因，不静默吞掉。
      */

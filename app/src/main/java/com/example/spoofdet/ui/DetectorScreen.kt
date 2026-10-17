@@ -135,6 +135,11 @@ fun DetectorScreen(
             unknownCount = all.count { it.status.verdict == Verdict.UNKNOWN },
             sampleCount = locations.size,
             stepCount = steps.size,
+            mandatoryDone = byTier[Tier.TIER1].orEmpty().count { it.hasConclusion } +
+                    byTier[Tier.TIER3].orEmpty().count { it.hasConclusion },
+            mandatoryTotal = byTier[Tier.TIER1].orEmpty().size + byTier[Tier.TIER3].orEmpty().size,
+            samplingDone = byTier[Tier.TIER2].orEmpty().count { it.hasConclusion },
+            samplingTotal = byTier[Tier.TIER2].orEmpty().size,
             onExport = export,
             onRestart = onRestart
         )
@@ -299,6 +304,10 @@ private fun VerdictCard(
     unknownCount: Int,
     sampleCount: Int,
     stepCount: Int,
+    mandatoryDone: Int,
+    mandatoryTotal: Int,
+    samplingDone: Int,
+    samplingTotal: Int,
     onExport: () -> Unit,
     onRestart: () -> Unit
 ) {
@@ -319,16 +328,31 @@ private fun VerdictCard(
     }
 
     // 进度条按"已形成结论"推进：未见痕迹也算查过了，只是在结论上是有保留的。
-    val done = total - unknownCount
-    val progressTarget = if (total == 0) 0f else done.toFloat() / total.toFloat()
+    //
+    // 关键是这里区分两类项：
+    //   - 必检项（档一 + 档三）：不依赖定位权限，开App就跑，几秒内必然有结论
+    //   - 采样项（档二）：依赖 GPS 样本，室内可能等几分钟也等不来一个 fix
+    // 如果两者混在一个分母里，室内场景下进度会长期停在 9/16 附近不动，
+    // 看起来就是"跑不完"——实际是必检项早跑完了，卡住的是采样项。
+    // 因此必检项单独成一条进度，采样项另起一条，各自推进、各自收尾。
+    val tier1Tier3 = mandatoryTotal
+    val mandatoryProgressTarget = if (mandatoryTotal == 0) 0f
+    else mandatoryDone.toFloat() / mandatoryTotal.toFloat()
+    val samplingTarget = if (samplingTotal == 0) 1f
+    else samplingDone.toFloat() / samplingTotal.toFloat()
 
     // 进度条用 EaseOut 曲线：起步快、收尾缓，符合"进度推进"的心理预期。
     // 原来用默认的 FastOutSlowIn（两头慢中间快），在短距离推进时
     // 前 100ms 几乎看不出变化，显得很钝。
-    val progress by animateFloatAsState(
-        targetValue = progressTarget.coerceIn(0f, 1f),
+    val mandatoryProgress by animateFloatAsState(
+        targetValue = mandatoryProgressTarget.coerceIn(0f, 1f),
         animationSpec = tween(durationMillis = 620, easing = FastOutSlowInEasing),
-        label = "progress"
+        label = "mandatoryProgress"
+    )
+    val samplingProgress by animateFloatAsState(
+        targetValue = samplingTarget.coerceIn(0f, 1f),
+        animationSpec = tween(durationMillis = 620, easing = FastOutSlowInEasing),
+        label = "samplingProgress"
     )
     // 结论文案变化时的淡入
     val headlineAlpha by animateFloatAsState(
@@ -340,11 +364,32 @@ private fun VerdictCard(
     val phaseText = when (phase) {
         DetectionController.Phase.IDLE -> "待机"
         DetectionController.Phase.RUNNING_STATIC -> "正在检查…"
-        DetectionController.Phase.COLLECTING -> "采样中"
+        // 采样中必须说清"还要等什么"：只说"采样中"用户会以为卡死了。
+        // 必检项此时早已跑完，进度条也已经满格，剩下的纯粹是等 GPS 样本。
+        DetectionController.Phase.COLLECTING ->
+            if (samplingDone >= samplingTotal) "已完成，采样继续中"
+            else "采样中，等 GPS 样本"
         DetectionController.Phase.DONE -> "已完成"
         DetectionController.Phase.PERMISSION_DENIED -> "缺少定位权限"
         DetectionController.Phase.FAILED -> "检查失败"
     }
+
+    val busy = phase == DetectionController.Phase.RUNNING_STATIC ||
+            phase == DetectionController.Phase.COLLECTING
+
+    // 已用时间。startedAt 在控制器里早就记着，但界面一直没读，
+    // 结果就是"检测了多久"只能自己数秒——检测工具最该给的一个数字。
+    // 只在运行态按秒刷新：不跑的时候时间是静止的，不需要定时器。
+    val startedAt by controller.startedAt.collectAsState()
+    var nowMs by remember { mutableStateOf(System.currentTimeMillis()) }
+    LaunchedEffect(busy, startedAt) {
+        while (busy) {
+            nowMs = System.currentTimeMillis()
+            kotlinx.coroutines.delay(1000)
+        }
+    }
+    val elapsedText = if (startedAt <= 0L || !busy) ""
+    else formatElapsed((nowMs - startedAt).coerceAtLeast(0L))
 
     // 进度条高光：每次数据更新连扫三遍，然后静止等待下一次更新。
     //
@@ -354,11 +399,13 @@ private fun VerdictCard(
     //     重绘，且 uiautomator 永远拿不到 idle 状态（自动化全超时）
     //   - 连扫三遍而不是一遍：室内采样可能十几秒才来一个新点，
     //     只扫一遍会很快停住，看起来像卡死
-    val busy = phase == DetectionController.Phase.RUNNING_STATIC ||
-            phase == DetectionController.Phase.COLLECTING
+    //
+    // 触发条件是 mandatoryProgress（必检项）变化，不是 total 变化：
+    // 必检项是"确定会推进"的，采样项在室内可能几分钟不动，
+    // 拿它当触发条件会让高光在长静默期后突然孤零零扫一次，很怪。
     val shimmer = remember { Animatable(0f) }
-    LaunchedEffect(total, sampleCount, unknownCount, busy) {
-        if (busy && progress < 1f) {
+    LaunchedEffect(mandatoryDone, mandatoryProgressTarget, busy) {
+        if (busy && mandatoryProgress < 1f) {
             repeat(3) {
                 shimmer.snapTo(0f)
                 shimmer.animateTo(1f, tween(durationMillis = 1200, easing = LinearEasing))
@@ -374,6 +421,9 @@ private fun VerdictCard(
         shimmer.value > 0.88f -> (1f - shimmer.value) / 0.12f
         else -> 1f
     }
+    // 必检项跑完后高光彻底退场：动画有终点，不会一直闪。
+    // 采样阶段只剩进度条本身在动，这是"能跑完"的关键。
+    val showShimmer = busy && mandatoryProgress < 1f && shimmer.value < 1f
 
     Card(
         modifier = Modifier
@@ -414,7 +464,11 @@ private fun VerdictCard(
                 }
             }
 
-            // 进度条：已完成 / 总项
+            // 进度条：必检项（档一 + 档三）的完成比例。
+            //
+            // 这里刻意不用"全部 16 项"当分母：档二在室内可能永远等不到 GPS fix，
+            // 用总项数会让进度条长期停在 12/16 = 0.75 不动，看起来就是跑不完。
+            // 必检项不依赖权限、必然在几秒内全部出结论，所以这条进度条有确定的终点。
             BoxWithConstraints(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -425,35 +479,109 @@ private fun VerdictCard(
             ) {
                 Box(
                     modifier = Modifier
-                        .fillMaxWidth(progress)
+                        .fillMaxWidth(mandatoryProgress)
                         .height(5.dp)
                         .background(cs.primary, RoundedCornerShape(3.dp))
                 )
-                if (busy && progress < 1f) {
-                    // 高光全程在「未完成区间」内从左到右扫过：
-                    // 起点 0，终点 = 轨道宽 - 高光宽。
-                    // 配合 clipToBounds，任何时候都不会越过蓝色前沿或跑出轨道。
-                    val highlight = maxWidth * 0.22f
-                    val travel = (maxWidth - highlight).coerceAtLeast(0.dp)
-                    Box(
-                        modifier = Modifier
-                            .fillMaxWidth(0.22f)
-                            .height(5.dp)
-                            .offset(x = travel * shimmer.value)
-                            .background(
-                                cs.onPrimary.copy(alpha = 0.5f * shimmerAlpha),
-                                RoundedCornerShape(3.dp)
-                            )
-                    )
+            if (showShimmer) {
+                // 高光全程在「未完成区间」内从左到右扫过：
+                // 起点 0，终点 = 轨道宽 - 高光宽。
+                // 配合 clipToBounds，任何时候都不会越过蓝色前沿或跑出轨道。
+                val highlight = maxWidth * 0.22f
+                val travel = (maxWidth - highlight).coerceAtLeast(0.dp)
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(0.22f)
+                        .height(5.dp)
+                        .offset(x = travel * shimmer.value)
+                        .background(
+                            cs.onPrimary.copy(alpha = 0.5f * shimmerAlpha),
+                            RoundedCornerShape(3.dp)
+                        )
+                )
+            }
+            // 必检项全部出结论时，进度条做一次"收尾"：变绿 + 轻微脉冲。
+            //
+            // 这是整个动画唯一的终点信号。之前进度条永远是蓝色，
+            // 必检项跑完了也没有任何视觉变化，用户只能靠读数字判断，
+            // 于是觉得"动画一直不停、从没跑完过"。
+            //
+            // 用 Animatable 而不是无限动画：只跑一次 480ms 然后永久静止，
+            // 既给出明确的完成反馈，也不会让界面持续重绘。
+            val mandatoryComplete = tier1Tier3 > 0 && mandatoryDone >= tier1Tier3
+            val settle = remember { Animatable(0f) }
+            LaunchedEffect(mandatoryComplete) {
+                if (mandatoryComplete) {
+                    settle.snapTo(0f)
+                    settle.animateTo(1f, tween(durationMillis = 480, easing = FastOutSlowInEasing))
                 }
             }
+            if (settle.value > 0f) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxWidth(mandatoryProgress)
+                        .height(5.dp + (2.dp * settle.value))
+                        .background(
+                            androidx.compose.ui.graphics.lerp(cs.primary, OK_COLOR, settle.value),
+                            RoundedCornerShape(3.dp)
+                        )
+                )
+            }
+        }
+
+        // 采样项进度条：档二自己的那条。它在室内会长期停在 0，
+        // 所以明确写出"未形成结论的项数"，让人知道是没数据而不是卡死。
+        if (samplingTotal > 0 && samplingProgress < 1f) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(top = 6.dp),
+                verticalAlignment = Alignment.CenterVertically
+            ) {
+                Text(
+                    text = "交叉验证项",
+                    fontSize = 10.sp,
+                    color = cs.onSurfaceSecondary
+                )
+                Spacer(modifier = Modifier.padding(start = 8.dp))
+                BoxWithConstraints(
+                    modifier = Modifier
+                        .weight(1f)
+                        .height(3.dp)
+                        .clipToBounds()
+                        .background(cs.surfaceVariant, RoundedCornerShape(2.dp))
+                ) {
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth(samplingProgress)
+                            .height(3.dp)
+                            .background(cs.primary.copy(alpha = 0.55f), RoundedCornerShape(2.dp))
+                    )
+                }
+                Text(
+                    text = "$samplingDone/$samplingTotal",
+                    fontSize = 10.sp,
+                    color = cs.onSurfaceSecondary,
+                    modifier = Modifier.padding(start = 8.dp)
+                )
+            }
+        }
 
             Row(
                 modifier = Modifier.fillMaxWidth().padding(top = 12.dp),
-                horizontalArrangement = Arrangement.SpaceBetween
+                horizontalArrangement = Arrangement.SpaceBetween,
+                verticalAlignment = Alignment.CenterVertically
             ) {
-                Text("样本 $sampleCount", fontSize = 12.sp, color = cs.onSurfaceSecondary)
-                Text("步数 $stepCount", fontSize = 12.sp, color = cs.onSurfaceSecondary)
+                Text(
+                    text = "已完成 $mandatoryDone/$tier1Tier3 项",
+                    fontSize = 12.sp,
+                    color = cs.onSurfaceSecondary
+                )
+                Text(
+                    text = if (elapsedText.isEmpty()) "样本 $sampleCount" else "$elapsedText · 样本 $sampleCount",
+                    fontSize = 12.sp,
+                    color = cs.onSurfaceSecondary
+                )
                 Text(
                     "点此导出报告",
                     fontSize = 12.sp,
@@ -911,6 +1039,20 @@ private fun gnssSummary(samples: List<android.location.Location>, g: GnssSnapsho
                 (if (g.meanCn0 > 0f) "，CN0 均值 ${"%.1f".format(g.meanCn0)} dB-Hz" else "")
     }
     return "来源 $src · $receiver"
+}
+
+/**
+ * 毫秒转「已用时间」。
+ *
+ * 超过一小时才显示小时，否则 0:03:07 这种写法在检测场景里反而更难读。
+ * 检测通常几十秒到几分钟，所以主要覆盖分秒两段。
+ */
+private fun formatElapsed(ms: Long): String {
+    val totalSec = ms / 1000
+    val h = totalSec / 3600
+    val m = (totalSec % 3600) / 60
+    val s = totalSec % 60
+    return if (h > 0) "%d:%02d:%02d".format(h, m, s) else "%d:%02d".format(m, s)
 }
 
 /** 简洁提示条 */
