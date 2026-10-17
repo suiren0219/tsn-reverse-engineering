@@ -1,0 +1,797 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:compileSdkVersion="34" android:compileSdkVersionCodename="14" package="com.bxkj.student" platformBuildVersionCode="34" platformBuildVersionName="14">
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="true"/>
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-feature android:name="android.hardware.camera" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.front" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false"/>
+    <uses-feature android:name="android.hardware.camera.flash" android:required="false"/>
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="com.vivo.abe.permission.action.openhpactivity"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES"/>
+    <uses-permission android:name="android.permission.DISABLE_KEYGUARD"/>
+    <uses-permission android:name="android.permission.RECORD_AUDIO"/>
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION"/>
+    <uses-permission android:name="android.permission.REQUEST_EXTERNAL_STORAGE"/>
+    <permission android:name="com.bxkj.student.openadsdk.permission.TT_PANGOLIN" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.bxkj.student.openadsdk.permission.TT_PANGOLIN"/>
+    <uses-permission android:name="android.permission.CALL_PHONE"/>
+    <permission android:name="com.bxkj.student.sports.permissions.MY_BROADCAST" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.bxkj.student.sports.permissions.MY_BROADCAST"/>
+    <permission android:name="com.bxkj.student.sports.permissions.V3_Sports_BROADCAST" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.bxkj.student.sports.permissions.V3_Sports_BROADCAST"/>
+    <uses-permission android:name="android.permission.ACTIVITY_RECOGNITION"/>
+    <uses-feature android:name="android.hardware.sensor.stepcounter" android:required="true"/>
+    <uses-feature android:name="android.hardware.sensor.stepdetector" android:required="true"/>
+    <permission android:name="com.bxkj.student.permission.JPUSH_MESSAGE" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.huawei.android.launcher.permission.CHANGE_BADGE"/>
+    <uses-permission android:name="com.vivo.notification.permission.BADGE_ICON"/>
+    <uses-permission android:name="android.permission.VIBRATE"/>
+    <uses-permission android:name="com.hihonor.android.launcher.permission.CHANGE_BADGE"/>
+    <uses-permission android:name="android.permission.SYSTEM_OVERLAY_WINDOW"/>
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.MAIN"/>
+            <category android:name="android.intent.category.LAUNCHER"/>
+        </intent>
+        <package android:name="com.smile.gifmaker"/>
+        <package android:name="com.kuaishou.nebula"/>
+        <package android:name="com.ss.android.ugc.aweme"/>
+        <package android:name="com.ss.android.ugc.aweme.lite"/>
+        <intent>
+            <action android:name="android.intent.action.VIEW"/>
+            <category android:name="android.intent.category.BROWSABLE"/>
+            <data android:scheme="https"/>
+        </intent>
+        <package android:name="com.huawei.hff"/>
+        <package android:name="com.huawei.hms"/>
+        <package android:name="com.huawei.hwid"/>
+        <package android:name="com.huawei.hwid.tv"/>
+        <package android:name="com.huawei.works"/>
+    </queries>
+    <uses-permission android:name="android.permission.REORDER_TASKS"/>
+    <uses-permission android:name="com.asus.msa.SupplementaryDID.ACCESS"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-permission android:name="android.permission.FLASHLIGHT"/>
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+    <uses-permission android:name="android.permission.INTERACT_ACROSS_USERS_FULL"/>
+    <permission android:name="com.bxkj.student.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" android:protectionLevel="signature"/>
+    <uses-permission android:name="com.bxkj.student.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"/>
+    <uses-permission android:name="com.bxkj.student.permission.JPUSH_MESSAGE"/>
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
+    <application android:allowBackup="false" android:appComponentFactory="com.SecShell.SecShell.AP" android:extractNativeLibs="true" android:hardwareAccelerated="true" android:icon="@mipmap/icon" android:label="@string/app_name" android:largeHeap="true" android:name="com.SecShell.SecShell.AW" android:networkSecurityConfig="@xml/network_security_config" android:roundIcon="@mipmap/icon" android:supportsRtl="true" android:theme="@style/AppTheme" android:usesCleartextTraffic="true">
+        <meta-data android:name="APP_KEY" android:value="Je_c16223bd89360e0ee94f61e5c3173a15"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="true" android:name="com.bxkj.student.wxapi.WXEntryActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="layoutDirection|screenSize|smallestScreenSize" android:hardwareAccelerated="true" android:name="com.bxkj.student.splash.SplashActivity" android:resizeableActivity="true" android:screenOrientation="portrait" android:theme="@string/splashTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.bxkj.student.splash.WelcomeActivity" android:screenOrientation="portrait" android:theme="@style/SplashTheme"/>
+        <activity android:name="com.bxkj.student.splash.SelectSchoolActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.splash.SelectSchoolV2Activity" android:screenOrientation="portrait" android:theme="@style/V3_Sports_AppTheme" android:windowSoftInputMode="adjustPan"/>
+        <activity android:launchMode="singleTask" android:name="com.bxkj.student.MainActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan">
+            <intent-filter>
+                <action android:name="com.bxkj.student.default.MAIN"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data android:host="com.bxkj.student" android:path="/running" android:port="8888" android:scheme="bjtsn"/>
+            </intent-filter>
+        </activity>
+        <activity android:name="com.bxkj.student.home.HomeMenuListActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.personal.login.LoginActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.home.message.SystemMessageListActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.base.webview.H5DetailActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.home.teaching.exam.formal.ExamActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.home.teaching.exam.ExamListActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.home.teaching.exam.ExamDescriptionActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.home.teaching.evaluateteacher.EvaluateListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.evaluateteacher.EvaluateDescriptionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.evaluateteacher.EvaluateActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.scanscore.TestScoreListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.scanscore.TestProjectScoreListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.personal.reservation.DescriptionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.personal.reservation.ReservationListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.personal.reservation.ReservationDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.personal.record.MyReservationListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.personal.record.MyReservationDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.monitor.reservation.MonitorDescriptionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.monitor.reservation.MonitorReservationListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.monitor.reservation.MonitorReservationDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.rank.PhysicalTestRankActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.exam.record.ExamDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.monitor.record.MonitorRecordListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.monitor.record.MonitorRecordDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.mc.ApplyMCActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.home.teaching.healthstatus.ApplyHealthStudentActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.place.history.ApplyHistoryListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.leave.SelectLessenListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.leave.LeaveActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.personal.HelpCenterListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.lesson.OnLineLessonActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.run.app.ready.ThreeTwoOneActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.lesson.ViewTermActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.lesson.ViewLessonActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.rollcall.RollCallActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.MyQRCodeActivity"/>
+        <activity android:name="com.bxkj.student.run.app.record.RunRecorderListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.run.app.ready.RunDescriptionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.AboutUsActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.SafeSetActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.SystemSetActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.password.UpdatePasswordActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.password.InputNewPasswordActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.UserInfoActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.run.app.StartRunActivity" android:screenOrientation="portrait" android:theme="@style/appStartRunTheme"/>
+        <activity android:name="com.bxkj.student.home.teaching.lesson.LessonDescriptionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.run.punchcard.RecorderListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.message.MessageActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTop" android:name="com.bxkj.student.personal.customer.ContactCustomerActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.study.VideoPlayActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.life.mall.SearchGoodsActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="com.bxkj.student.home.teaching.resultfinal.ViewTermActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.resultfinal.AllScoreForTeamActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.mall.GoodsDetailActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.life.mall.CartActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.run.punchcard.TotalActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.collect.CollectActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.lost.PublishLostActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="com.bxkj.student.life.lost.AddQuestionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.lost.LostDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.mall.order.OrderActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.mall.address.MyAddressListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.mall.address.AddAddressActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.mall.address.ChooseCityActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.mall.order.ConfirmOrderActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="com.bxkj.student.life.mall.order.OrderPayActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.mall.order.PaySuccessActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.lost.MyLostGoodsActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.secondhand.PublishBuyActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name="com.bxkj.student.life.secondhand.BuyDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTask" android:name="com.bxkj.student.life.mall.order.OrderDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.secondhand.MyBuyGoodsActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.secondhand.SecondHandHomeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.lost.LostHomeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.mall.MallHomeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.mall.order.ViewLogisticsActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.info.InfoListActivity" android:screenOrientation="portrait"/>
+        <activity android:hardwareAccelerated="true" android:name="com.bxkj.student.life.info.InfoDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.life.mall.collect.CollectGoodsActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:exported="true" android:name="com.bxkj.student.SecretActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.calc.CalcActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.calc.CalcResultActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.sign.SignInActivity" android:screenOrientation="portrait" android:theme="@style/CalendarPickTheme"/>
+        <activity android:name="com.bxkj.student.home.teaching.lesson.ChooseLessonActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.lesson.ChooseTimeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.sign.SignRecordListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.mc.ApplyMcListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.mc.ApplyMCDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.run.extraclass.SignListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.ClipImageActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTop" android:name="com.bxkj.student.run.app.RunningActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTop" android:name="com.bxkj.student.home.teaching.rollcall.BlueToothSignActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTop" android:name="com.bxkj.student.home.teaching.rollcall.BleSignActivity" android:screenOrientation="portrait"/>
+        <activity android:hardwareAccelerated="true" android:name="com.bxkj.student.run.app.face.FaceDetectExpActivity" android:screenOrientation="portrait" android:theme="@style/ThemeAppCompatNoTitle"/>
+        <activity android:name="com.bxkj.student.run.app.record.AppealActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.run.app.set.RunSettingActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.run.app.set.RunPermissionSetActivity" android:screenOrientation="portrait" android:theme="@style/appStartRunTheme"/>
+        <activity android:launchMode="singleTop" android:name="com.bxkj.student.run.app.lockscreen.LockScreenActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.exam.record.ExamRecordActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.activity.BookingActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.activity.BookingDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.activity.MyBookingListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.yalantis.ucrop.UCropActivity" android:screenOrientation="portrait" android:theme="@style/AppTheme"/>
+        <activity android:name="com.bxkj.student.home.teaching.exam.mock.NewExamActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.home.teaching.learning.detail.backup.VideoPlayActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.run.app.set.RunFrequencySetActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.LearnHomeListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.detail.backup.H5Activity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.my.MyLearnActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.my.MyRecordListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.my.MyIntegralListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.my.RankListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.answer.AnswerActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.LearningCategoryActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.InputEyeScoreActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.run.app.face.widget.FaceDetect5ExpActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.run.app.record.RunDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.activity.BookingLessonActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.run.app.my.MyRunActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.run.app.my.RunRankActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.run.app.my.RunStatisticsActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.run.app.apply.ApplyAvoidRunActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.run.app.apply.ApplyAvoidRunListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.run.app.apply.ApplyAvoidRunDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.separateexam.ExamLessonListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.separateexam.ExamLessonDescriptionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.separateexam.AppointExamListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.separateexam.MyAppointExamListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.healthstatus.ApplyHealthStatusListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.healthstatus.ApplyHealthStatusDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.apply.ScoreDoubtActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.apply.ApplyScoreDoubtActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.apply.ApplyTestScoreDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.password.forget.InputNumberActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.password.forget.FindPasswordTypeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.password.forget.SelectClassmateActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.exam.FaceDetectExamActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.splash.OpenPrivacyAgreementActivity" android:screenOrientation="portrait" android:theme="@style/V2AppTheme"/>
+        <activity android:name="com.bxkj.student.home.teaching.leave.recorder.LeaveRecordListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.leave.recorder.LeaveRecordDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.ready.LearnDescriptionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.ready.SelectLessonActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.question.list.QuestionListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.question.RadioQuestionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.question.CheckboxQuestionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.question.TextQuestionActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTask" android:name="com.bxkj.student.home.teaching.learning.question.VideoQuestionActivity" android:screenOrientation="portrait"/>
+        <activity android:label="@string/app_name" android:name="com.jmolsmobile.landscapevideocapture.VideoCaptureActivity" android:screenOrientation="sensor"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.question.ImageActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.my.RefuseQuestionListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.learning.FaceDetectLearnActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.home.teaching.learning.detail.LearnDetailActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.home.teaching.homework.ViewTermActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.homework.ViewLessonActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.homework.question.list.QuestionListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.homework.question.CheckboxQuestionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.homework.question.ImageActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.homework.question.RadioQuestionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.homework.question.TextQuestionActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTask" android:name="com.bxkj.student.home.teaching.homework.question.VideoQuestionActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.common.utils.video.OnLinePlayVideoActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.home.teaching.exam.SelectExamLessonActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.personal.customer.ContactCustomerServiceActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.lesson.CertificateActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.common.utils.video.LocalVideoPreviewActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.circle.CircleDetailActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.student.home.teaching.homework.question.PdfQuestionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.homework.question.PdfViewActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.rollcall.SignActivity" android:screenOrientation="portrait"/>
+        <activity android:launchMode="singleTop" android:name="com.bxkj.student.home.teaching.rollcall.term.ViewTermActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.teaching.rollcall.term.ViewLessonActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.home.physicaltest.AdmissionTicketActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.run.app.keep.KeepAuthH5Activity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.student.run.app.keep.SyncKeepDataActivity" android:screenOrientation="portrait" android:theme="@style/CalendarPickTheme"/>
+        <activity android:name="com.bxkj.student.run.app.exam.QuestionActivity" android:screenOrientation="portrait"/>
+        <meta-data android:name="android.max_aspect" android:value="2.1"/>
+        <meta-data android:name="com.amap.api.v2.apikey" android:value="20450635af5f34ecb0270d71e9ae9c2e"/>
+        <meta-data android:name="UMENG_APPKEY" android:value="59a61305a3251138c9000c17"/>
+        <meta-data android:name="UMENG_CHANNEL" android:value="xiaomi"/>
+        <provider android:authorities="com.bxkj.student.provider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
+        </provider>
+        <provider android:authorities="com.bxkj.student.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths"/>
+        </provider>
+        <receiver android:name="com.bxkj.student.run.app.step.AlarmReceiver"/>
+        <service android:foregroundServiceType="location" android:name="com.amap.api.location.APSService"/>
+        <service android:foregroundServiceType="location" android:name="com.bxkj.student.run.app.location.service.LocationService" android:process=":location"/>
+        <service android:foregroundServiceType="location" android:name="com.bxkj.student.run.app.step.service.StepService" android:process=":step"/>
+        <service android:foregroundServiceType="location" android:name="com.bxkj.student.run.app.step.LongRunningService"/>
+        <service android:foregroundServiceType="location" android:name="com.bxkj.student.v2.ui.sports.v3.service.V3LocationService"/>
+        <service android:foregroundServiceType="location" android:name="com.bxkj.student.v2.ui.sports.v3.service.step.V3StepService"/>
+        <provider android:authorities="com.bxkj.student.TsnPreferencesProvider" android:exported="false" android:name="com.bxkj.student.v2.common.data.TsnPreferencesProvider"/>
+        <activity android:exported="true" android:launchMode="singleTask" android:name="com.tencent.tauth.AuthActivity" android:noHistory="true">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="tencent1106200175"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="true" android:name="com.tencent.connect.common.AssistActivity" android:screenOrientation="behind" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:hardwareAccelerated="true" android:name="com.bxkj.student.v2.ui.h5.H5AppActivity" android:screenOrientation="portrait" android:theme="@style/V2AppTheme"/>
+        <activity android:name="com.bxkj.student.run.extraclass.SignTypeActivity"/>
+        <activity android:name="com.bxkj.student.run.extraclass.QrScanSignActivity"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.my.MyQRCodeActivity" android:theme="@style/V2AppTheme"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.my.AboutUsActivity" android:theme="@style/V2AppTheme"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="com.bxkj.student.v2.ui.MainActivity" android:theme="@style/V2AppTheme" android:windowSoftInputMode="adjustPan"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.bxkj.student.v2.ui.LoginActivity" android:theme="@style/V2AppTheme"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.sports.set.SportsDescriptionActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.sports.set.SportsSetActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.sports.set.SportsRankActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.sports.set.SoundFrequencyActivity" android:screenOrientation="portrait" android:theme="@style/V3_Sports_AppTheme"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.face.FaceCollectActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.face.FaceCheckV2Activity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.sports.set.PermissionSetActivity" android:screenOrientation="portrait" android:theme="@style/V3_Sports_AppTheme"/>
+        <activity android:configChanges="fontScale|keyboardHidden|layoutDirection|orientation|screenSize|smallestScreenSize" android:name="com.bxkj.student.v2.ui.my.FullScreenCodeActivity" android:resizeableActivity="true" android:theme="@style/SplashTheme">
+            <meta-data android:name="android.max_aspect" android:value="2.2"/>
+            <meta-data android:name="android.notch_support" android:value="true"/>
+            <meta-data android:name="notch.config" android:value="portrait"/>
+        </activity>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.personal.bind.WechatQQBindAccountActivity"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="com.bxkj.student.personal.bind.BindWechatQQActivity"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.bxkj.student.v2.ui.sports.v3.V3SportsHomeActivity" android:screenOrientation="portrait" android:theme="@style/V3_SportsHome_AppTheme"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="com.bxkj.student.v2.ui.sports.v3.V4SportActivity" android:screenOrientation="portrait" android:theme="@style/V2AppTheme"/>
+        <activity android:name="com.bxkj.student.v2.ui.sports.v3.V3ThreeTwoOneActivity"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.sports.v3.record.V3RecordListActivity" android:screenOrientation="portrait" android:theme="@style/V2AppTheme"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.sports.v3.detail.V3RecordDetailActivity" android:screenOrientation="portrait" android:theme="@style/V2AppTheme"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.my.AdSwitchActivity" android:theme="@style/V2AppTheme"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.bxkj.student.v2.ui.face.FaceDetectV3Activity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.bxkj.student.v2.ui.face.FaceLiveV3Activity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="com.bxkj.student.v2.ui.sports.v3.appeal.V3AppealActivity" android:theme="@style/V3_Sports_AppTheme"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.sports.v3.set.V3StatisticsActivity" android:theme="@style/V3_Sports_AppTheme"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.face.FaceCollectConfirmActivity" android:theme="@style/V3_Sports_AppTheme"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize|smallestScreenSize" android:name="com.bxkj.student.v2.ui.sports.v3.dxyy.ar.ARActivity"/>
+        <activity android:name="com.bxkj.student.v2.ai.fitness.AIFitnessHomeActivity" android:theme="@style/V2AppTheme"/>
+        <activity android:name="com.bxkj.student.v2.ai.fitness.LivePreviewActivity" android:theme="@style/V2AppTheme"/>
+        <activity android:configChanges="fontScale|keyboardHidden|orientation|screenSize" android:name="com.bxkj.student.v2.ui.my.BugReportActivity" android:theme="@style/V3_Sports_AppTheme"/>
+        <activity android:name="com.bxkj.student.v2.ui.face.FaceAgreementActivity" android:theme="@style/V3_Sports_AppTheme"/>
+        <meta-data android:name="firebase_performance_collection_deactivated" android:value="false"/>
+        <meta-data android:name="firebase_remote_config_collection_deactivated" android:value="true"/>
+        <meta-data android:name="com.google.mlkit.vision.pose.disableRemoteConfig" android:value="true"/>
+        <provider android:authorities="com.bxkj.student.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/asnp_file_paths"/>
+        </provider>
+        <provider android:authorities="com.bxkj.student.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="androidx.core.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/beizi_file_path"/>
+        </provider>
+        <provider android:authorities="com.bxkj.student.gdt.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="com.qq.e.comm.GDTFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/gdt_file_path"/>
+        </provider>
+        <provider android:authorities="com.bxkj.student.TTFileProvider" android:exported="false" android:grantUriPermissions="true" android:name="com.bytedance.sdk.openadsdk.TTFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/pangle_file_paths"/>
+        </provider>
+        <provider android:authorities="com.bxkj.student.TTFileProvider" android:exported="false" android:grantUriPermissions="true" android:name="com.bytedance.sdk.openadsdk.TTFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/pangle_file_paths"/>
+        </provider>
+        <service android:enabled="true" android:exported="true" android:label="@string/accessiblity_name" android:name="com.acse.ottn.service.ShopHelperService" android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE" android:process=".LoadingActivity">
+            <intent-filter>
+                <action android:name="android.accessibilityservice.AccessibilityService"/>
+            </intent-filter>
+            <meta-data android:name="android.accessibilityservice" android:resource="@xml/accessibility"/>
+        </service>
+        <service android:enabled="true" android:exported="false" android:name="com.bxkj.student.common.jpush.JPushService" android:process=":pushcore">
+            <intent-filter>
+                <action android:name="cn.jiguang.user.service.action"/>
+            </intent-filter>
+        </service>
+        <receiver android:exported="true" android:name="com.bxkj.student.common.jpush.PushMessageService">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.SERVICE_MESSAGE"/>
+                <category android:name="com.bxkj.student"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="true" android:name="com.bxkj.student.common.jpush.LoginStatusChangeService" android:permission="com.bxkj.student.sports.permissions.V3_Sports_BROADCAST">
+            <intent-filter>
+                <action android:name="com.bxkj.student.LOGIN_STATUS_CHANGE"/>
+                <category android:name="com.bxkj.student"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:enabled="true" android:exported="false" android:name="com.bxkj.student.common.jpush.JPushReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY"/>
+                <category android:name="com.bxkj.student"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTRATION"/>
+                <action android:name="cn.jpush.android.intent.MESSAGE_RECEIVED"/>
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED"/>
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_OPENED"/>
+                <action android:name="cn.jpush.android.intent.CONNECTION"/>
+                <category android:name="com.bxkj.student"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="com.bxkj.competition.signup.CompetitionListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.signup.my.MyCompetitionListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.signup.FreeProjectListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.signup.CompetitionDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.signup.CostProjectListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.signup.pay.CompetitionPayActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.signup.pay.CompetePaySuccessActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.score.CompetitionListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.score.CompetitionProjectListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.score.teacher.FieldScoreListActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustResize|stateVisible"/>
+        <activity android:name="com.bxkj.competition.score.teacher.AddScoreMenuActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.score.teacher.TrackScoreListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.score.student.StudentScoreListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.newsletter.CompetitionListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.newsletter.NewsLetterListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.newsletter.PostActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.competition.electronicentry.ElectronicEntryActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.electronicentry.CompeteListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.HomeListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.competition.MenuActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.place.apply.ApplyIntroductionActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.place.apply.SchoolDistrictActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.place.apply.ApplyPlaceActivity" android:screenOrientation="portrait" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.place.apply.PlaceListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.equipment.ApplyEquipmentActivity" android:screenOrientation="portrait" android:theme="@style/CalendarPickTheme" android:windowSoftInputMode="adjustPan"/>
+        <activity android:name="com.bxkj.equipment.history.RecordListActivity" android:screenOrientation="portrait"/>
+        <service android:name="com.devlin_n.videoplayer.player.BackgroundPlayService"/>
+        <activity android:name="xyz.adscope.amps.tool.downloadinfo.AMPSDownloadAppInfoActivity"/>
+        <activity android:exported="false" android:name="com.beizi.ad.v2.activity.BeiZiNewInterstitialActivity" android:theme="@style/BeiZiTheme.Transparent"/>
+        <activity android:exported="false" android:name="com.beizi.ad.v2.activity.BeiZiNewRewardVideoActivity"/>
+        <activity android:exported="false" android:name="com.beizi.ad.internal.activity.DownloadAppInfoActivity"/>
+        <activity android:exported="false" android:name="com.beizi.ad.internal.activity.BeiZiDownloadDialogActivity" android:theme="@style/BeiZiTheme.Transparent"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:hardwareAccelerated="true" android:name="com.beizi.ad.v2.activity.BeiZiLandingPageActivity"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:hardwareAccelerated="true" android:name="com.beizi.ad.v2.activity.BeiZiNewLandingPageActivity"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:exported="false" android:hardwareAccelerated="true" android:name="com.beizi.ad.v2.activity.BeiZiLandingActivity"/>
+        <service android:exported="false" android:name="com.beizi.ad.DownloadService"/>
+        <activity android:name="biz.beizi.adn.ad.widget.activity.ASNPDownloadPromptActivity" android:theme="@style/adscope_dialog_activity"/>
+        <activity android:name="biz.beizi.adn.ad.widget.activity.ASNPDlInfoDetailActivity"/>
+        <activity android:name="biz.beizi.adn.ad.widget.activity.ASNPAdActivity" android:theme="@style/adscope_theme_transparent"/>
+        <activity android:name="biz.beizi.adn.ad.widget.activity.ASNPLandingPageActivity"/>
+        <activity android:name="biz.beizi.adn.ad.widget.activity.ASNPRewardVideoActivity"/>
+        <service android:name="biz.beizi.adn.ad.download.service.DownloadService"/>
+        <service android:exported="false" android:multiprocess="true" android:name="com.qq.e.comm.DownloadService"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:exported="false" android:multiprocess="true" android:name="com.qq.e.ads.ADActivity"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:exported="false" android:multiprocess="true" android:name="com.qq.e.ads.PortraitADActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize" android:exported="false" android:multiprocess="true" android:name="com.qq.e.ads.LandscapeADActivity" android:screenOrientation="sensorLandscape" android:theme="@android:style/Theme.Light.NoTitleBar"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:exported="false" android:multiprocess="true" android:name="com.qq.e.ads.RewardvideoPortraitADActivity" android:theme="@android:style/Theme.Light.NoTitleBar">
+            <meta-data android:name="android.notch_support" android:value="true"/>
+        </activity>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:exported="false" android:multiprocess="true" android:name="com.qq.e.ads.RewardvideoLandscapeADActivity" android:screenOrientation="landscape" android:theme="@android:style/Theme.Light.NoTitleBar">
+            <meta-data android:name="android.notch_support" android:value="true"/>
+        </activity>
+        <activity android:exported="false" android:multiprocess="true" android:name="com.qq.e.ads.DialogActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.AdWebViewActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.KsFullScreenVideoActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.KsFullScreenLandScapeVideoActivity" android:screenOrientation="landscape" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.KsRewardVideoActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.KSRewardLandScapeVideoActivity" android:screenOrientation="landscape" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.FeedDownloadActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$KsTrendsActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$ProfileHomeActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$ProfileVideoDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$TubeProfileActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$ChannelDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$TubeDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$EpisodeDetailActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$RequestInstallPermissionActivity" android:theme="@style/TransparentDialogActivity">
+            <intent-filter>
+                <action android:name="intent.action.requestInstallPermission"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity1" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$GoodsPlayBackActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity2" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity3" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity4" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity5" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity6" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity7" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity8" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity9" android:screenOrientation="portrait" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity10" android:screenOrientation="behind" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="adjustPan|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity11" android:screenOrientation="behind" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity12" android:screenOrientation="behind" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity13" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity14" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity15" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity16" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity17" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivity18" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:launchMode="singleTop" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivitySingleTop1" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:launchMode="singleTop" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivitySingleTop2" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:launchMode="singleTop" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivitySingleTop3" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleInstance" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivitySingleInstance1" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleInstance" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivitySingleInstance2" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleInstance" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$FragmentActivitySingleInstance3" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:exported="true" android:label="handler" android:name="com.kwad.auth.login.KwadRouteHandlerActivity" android:screenOrientation="behind" android:theme="@style/ksad_Theme.CustomTranslucent"/>
+        <activity-alias android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:exported="true" android:name="com.bxkj.student.kwad.KwadHandlerActivity" android:screenOrientation="behind" android:targetActivity="com.kwad.auth.login.KwadRouteHandlerActivity"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleInstance" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$DeveloperConfigActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$LandscapeFragmentActivity" android:screenOrientation="landscape" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$LandscapeFragmentActivitySingleTop1" android:screenOrientation="landscape" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTop" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$LandscapeFragmentActivitySingleTop2" android:screenOrientation="landscape" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$LandscapeFragmentActivitySingleTask1" android:screenOrientation="landscape" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleTask" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$LandscapeFragmentActivitySingleTask2" android:screenOrientation="landscape" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleInstance" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$LandscapeFragmentActivitySingleInstance1" android:screenOrientation="landscape" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:launchMode="singleInstance" android:name="com.kwad.sdk.api.proxy.app.BaseFragmentActivity$LandscapeFragmentActivitySingleInstance2" android:screenOrientation="landscape" android:theme="@style/Theme.AppCompat.NoActionBar"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.WebPageActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|locale|orientation|screenLayout|screenSize" android:name="com.kwad.sdk.api.proxy.app.PayResultActivity" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"/>
+        <service android:name="com.kwad.sdk.api.proxy.app.FileDownloadService$SharedMainProcessService"/>
+        <service android:name="com.kwad.sdk.api.proxy.app.FileDownloadService$SeparateProcessService"/>
+        <service android:exported="false" android:name="com.kwad.sdk.api.proxy.app.DownloadService"/>
+        <service android:exported="false" android:name="com.kwad.sdk.api.proxy.app.ServiceProxyRemote" android:process=":kssdk_remote"/>
+        <provider android:authorities="com.bxkj.student.adFileProvider" android:exported="false" android:grantUriPermissions="true" android:name="com.kwad.sdk.api.proxy.app.AdSdkFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/ksad_file_paths"/>
+        </provider>
+        <provider android:authorities="com.bxkj.student.bd.provider" android:exported="false" android:grantUriPermissions="true" android:name="com.baidu.mobads.sdk.api.BdFileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/bd_file_paths"/>
+        </provider>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:name="com.baidu.mobads.sdk.api.AppActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|orientation" android:name="com.baidu.oauth.sdkbqt.view.WebViewActivity" android:screenOrientation="portrait" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize|uiMode" android:name="com.baidu.mobads.sdk.api.MobRewardVideoActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|screenSize|smallestScreenSize" android:name="com.baidu.mobads.sdk.api.BdShellActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <receiver android:enabled="true" android:exported="false" android:name="com.byazt.za.Collector"/>
+        <activity android:exported="false" android:launchMode="singleTask" android:name="com.ss.android.downloadlib.activity.TTDelegateActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:exported="false" android:launchMode="singleTask" android:name="com.byazt.bm.JumpKllkActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <receiver android:exported="false" android:name="com.byazt.zs.DownloadReceiver"/>
+        <activity android:exported="false" android:launchMode="singleTask" android:name="com.ss.android.socialbase.appdownloader.view.DownloadHandleNotificationActivity"/>
+        <service android:exported="false" android:name="com.byazt.z.DownloadHandlerService" android:stopWithTask="true"/>
+        <activity android:exported="false" android:launchMode="singleTask" android:name="com.ss.android.socialbase.appdownloader.view.DownloadTaskDeleteActivity" android:theme="@android:style/Theme.Dialog"/>
+        <activity android:exported="false" android:launchMode="singleTask" android:name="com.byazt.y.JumpUnknownSourceActivity" android:theme="@android:style/Theme.Dialog"/>
+        <service android:enabled="true" android:exported="false" android:name="com.byazt.z.RetryJobSchedulerService" android:permission="android.permission.BIND_JOB_SERVICE" android:stopWithTask="true"/>
+        <service android:exported="false" android:name="com.byazt.n.DownloadNotificationService" android:stopWithTask="true"/>
+        <service android:exported="false" android:name="com.byazt.zz.CSJDownloadService" android:stopWithTask="true"/>
+        <service android:exported="false" android:name="com.byazt.b.DownloadHandleService" android:stopWithTask="true"/>
+        <service android:exported="false" android:name="com.byazt.zz.SqlDownloadCacheService" android:stopWithTask="true"/>
+        <service android:exported="false" android:name="com.byazt.zz.CSJIndependentProcessDownloadService" android:process=":downloader" android:stopWithTask="true">
+            <intent-filter>
+                <action android:name="com.ss.android.socialbase.downloader.remote"/>
+            </intent-filter>
+        </service>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="standard" android:name="com.bytedance.sdk.openadsdk.core.activity.base.TTNativePageActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="standard" android:name="com.bytedance.sdk.openadsdk.core.activity.base.TTWebPageActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="standard" android:name="com.bytedance.sdk.openadsdk.core.activity.base.TTSevenScreenWebPageActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="standard" android:name="com.bytedance.sdk.openadsdk.core.activity.base.TTVideoWebPageActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="standard" android:name="com.bytedance.sdk.openadsdk.core.activity.base.TTVideoScrollWebPageActivity" android:windowSoftInputMode="stateHidden"/>
+        <activity android:exported="false" android:launchMode="standard" android:name="com.bytedance.sdk.openadsdk.core.activity.base.TTDelegateActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="standard" android:name="com.bytedance.sdk.openadsdk.core.component.reward.activity.TTRewardVideoActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="standard" android:name="com.bytedance.sdk.openadsdk.core.component.reward.activity.TTFullScreenVideoActivity" android:screenOrientation="portrait"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="standard" android:name="com.bytedance.sdk.openadsdk.core.component.reward.activity.TTRewardVideoLandscapeActivity" android:screenOrientation="landscape"/>
+        <activity android:configChanges="keyboardHidden|orientation|screenSize" android:exported="false" android:launchMode="standard" android:name="com.bytedance.sdk.openadsdk.core.component.reward.activity.TTFullScreenVideoLandscapeActivity" android:screenOrientation="landscape"/>
+        <service android:exported="false" android:name="com.byazt.wzi.BinderPoolService"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="standard" android:name="com.byazt.qde.Stub_Standard_Activity" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize|uiMode" android:exported="false" android:launchMode="standard" android:name="com.byazt.qde.Stub_Standard_Portrait_Activity" android:screenOrientation="portrait" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="standard" android:name="com.byazt.qde.Stub_Standard_Activity_T" android:theme="@android:style/Theme.Translucent" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize|uiMode" android:exported="false" android:launchMode="standard" android:name="com.byazt.qde.Stub_Standard_Landscape_Activity" android:screenOrientation="landscape" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:name="com.byazt.qde.Stub_Activity" android:theme="@android:style/Theme.NoTitleBar" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.byazt.qde.Stub_SingleTask_Activity_T" android:theme="@android:style/Theme.Translucent" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.byazt.qde.Stub_SingleTask_Activity" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <provider android:authorities="com.bxkj.student.pangle.servermanager.downloader.com.bytedance.sdk.openadsdk.adhost" android:exported="false" android:name="com.byazt.gg.DownloaderServerManager" android:process=":downloader"/>
+        <provider android:authorities="com.bxkj.student.pangle.servermanager.main" android:exported="false" android:name="com.byazt.gg.MainServerManager"/>
+        <provider android:authorities="com.bxkj.student.TTMultiProvider" android:exported="false" android:name="com.byazt.vf.TTMultiProvider"/>
+        <service android:exported="false" android:name="com.byazt.nu.ApiDownloadHandlerService" android:stopWithTask="true"/>
+        <activity android:exported="false" android:launchMode="singleTask" android:name="com.byazt.nu.ApiDownloadHandleNotificationActivity"/>
+        <provider android:authorities="com.bxkj.student.pangle.servermanager.main" android:exported="false" android:name="com.byazt.quv.MainServerManager"/>
+        <provider android:authorities="com.bxkj.student.pangle.provider.proxy.main" android:exported="false" android:name="com.byazt.sj.MainProcessProviderProxy"/>
+        <provider android:authorities="com.bxkj.student.pangle.fileprovider" android:exported="false" android:grantUriPermissions="true" android:name="com.byazt.uk.FileProvider"/>
+        <activity android:exported="true" android:name="com.bytedance.android.openliveplugin.stub.activity.DouyinAuthorizeActivityProxy"/>
+        <activity android:exported="true" android:name="com.bytedance.android.openliveplugin.stub.activity.DouyinAuthorizeActivityLiveProcessProxy" android:process=":bytelive"/>
+        <provider android:authorities="com.bxkj.student.bytedance.android.openliveplugin.process.server.LiveServerManager" android:exported="false" android:name="com.bytedance.android.openliveplugin.process.server.LiveServerManager" android:process=":bytelive"/>
+        <activity android:configChanges="colorMode|keyboardHidden|orientation|uiMode" android:exported="false" android:name="com.bytedance.android.openliveplugin.stub.activity.StubActivity$Activity_Portrait" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"/>
+        <activity android:configChanges="colorMode|keyboardHidden|orientation|uiMode" android:exported="false" android:name="com.bytedance.android.openliveplugin.stub.activity.StubActivity$Activity_Portrait2" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"/>
+        <activity android:configChanges="colorMode|keyboardHidden|orientation|uiMode" android:exported="false" android:name="com.bytedance.android.openliveplugin.stub.activity.StubActivity$Activity_Portrait3" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"/>
+        <activity android:configChanges="colorMode|keyboardHidden|orientation|uiMode" android:exported="false" android:name="com.bytedance.android.openliveplugin.stub.activity.StubActivity$Activity_Portrait4" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"/>
+        <activity android:configChanges="colorMode|keyboardHidden|orientation|uiMode" android:exported="false" android:name="com.bytedance.android.openliveplugin.stub.activity.StubActivity$Activity_Portrait5" android:screenOrientation="portrait" android:theme="@android:style/Theme.Light.NoTitleBar"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.byted.live.lite.Activity_bytelive_singleTask4" android:process=":bytelive" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.byted.live.lite.Activity_bytelive_singleTop3" android:process=":bytelive" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.byted.live.lite.Activity_bytelive_singleTop2" android:process=":bytelive" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.byted.live.lite.Activity_bytelive_singleTop5" android:process=":bytelive" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.byted.live.lite.Activity_bytelive_singleTop4" android:process=":bytelive" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="standard" android:name="com.byted.live.lite.Activity_bytelive_standard" android:process=":bytelive" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.byted.live.lite.Activity_bytelive_singleTop1" android:process=":bytelive" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.byted.live.lite.Activity_bytelive_singleTask1" android:process=":bytelive" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.byted.live.lite.Activity_bytelive_singleTop6" android:process=":bytelive" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.byted.live.lite.Activity_bytelive_singleTask2" android:process=":bytelive" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.byted.live.lite.Activity_bytelive_singleTask3" android:process=":bytelive" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.byted.live.lite.Activity_main_singleTask1" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.byted.live.lite.Activity_main_singleTask2" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.byted.live.lite.Activity_main_singleTask3" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTask" android:name="com.byted.live.lite.Activity_main_singleTask4" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="standard" android:name="com.byted.live.lite.Activity_main_standard" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.byted.live.lite.Activity_main_singleTop1" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.byted.live.lite.Activity_main_singleTop2" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleInstance" android:name="com.byted.live.lite.Activity_main_singleInstance1" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.byted.live.lite.Activity_main_singleTop5" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.byted.live.lite.Activity_main_singleTop6" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.byted.live.lite.Activity_main_singleTop3" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleTop" android:name="com.byted.live.lite.Activity_main_singleTop4" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <activity android:configChanges="keyboardHidden|navigation|orientation|screenSize" android:exported="false" android:launchMode="singleInstance" android:name="com.byted.live.lite.Activity_bytelive_singleInstance1" android:process=":bytelive" android:windowSoftInputMode="adjustResize|stateHidden"/>
+        <provider android:authorities="com.bxkj.student.pangle.servermanager.bytelive.com.byted.live.lite" android:exported="false" android:name="com.byted.live.lite.ServerManager_bytelive" android:process=":bytelive"/>
+        <provider android:authorities="com.bxkj.student.pangle.servermanager.push.com.byted.live.lite" android:exported="false" android:name="com.byted.live.lite.ServerManager_push" android:process=":push"/>
+        <provider android:authorities="com.bxkj.student.pangle.servermanager.downloader.com.byted.live.lite" android:exported="false" android:name="com.byted.live.lite.ServerManager_downloader" android:process=":downloader"/>
+        <activity android:exported="false" android:name="com.bytedance.msdk.api.activity.TTDelegateActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:configChanges="keyboard|orientation|screenSize" android:exported="false" android:name="com.bytedance.msdk.api.activity.TTTransparentActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <uses-native-library android:name="libOpenCL.so" android:required="false"/>
+        <uses-native-library android:name="libOpenCL-car.so" android:required="false"/>
+        <uses-native-library android:name="libOpenCL-pixel.so" android:required="false"/>
+        <service android:directBootAware="true" android:exported="false" android:name="com.google.mlkit.common.internal.MlKitComponentDiscoveryService">
+            <meta-data android:name="com.google.firebase.components:com.google.mlkit.vision.pose.internal.PoseRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.mlkit.vision.common.internal.VisionCommonRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+            <meta-data android:name="com.google.firebase.components:com.google.mlkit.common.internal.CommonComponentRegistrar" android:value="com.google.firebase.components.ComponentRegistrar"/>
+        </service>
+        <activity android:exported="false" android:name="com.google.android.gms.common.api.GoogleApiActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name="com.bxkj.base.feedback.FeedBackActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.base.chat.ChatActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.base.chat.ConversationListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.base.chat.ContactListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.base.chat.ChatInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.base.chat.ChatUserInfoActivity" android:screenOrientation="portrait"/>
+        <activity android:name="com.bxkj.base.chat.ReportChatActivity"/>
+        <service android:name="com.bxkj.base.chat.heart.AlarmChatService" android:screenOrientation="portrait"/>
+        <service android:foregroundServiceType="dataSync" android:name="com.bxkj.base.v2.netty4android.service.NettySocketService" android:stopWithTask="false"/>
+        <service android:name="com.bxkj.base.v2.netty4android.client.heart.AlarmNettyService" android:stopWithTask="false"/>
+        <activity android:name="cn.bluemobi.dylan.photoview.ImagePagerActivity" android:screenOrientation="portrait" android:theme="@style/ImagePagerActivityTheme"/>
+        <provider android:authorities="com.bxkj.student.androidx-startup" android:exported="false" android:name="androidx.startup.InitializationProvider">
+            <meta-data android:name="androidx.work.WorkManagerInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="androidx.emoji2.text.EmojiCompatInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="androidx.lifecycle.ProcessLifecycleInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="androidx.profileinstaller.ProfileInstallerInitializer" android:value="androidx.startup"/>
+            <meta-data android:name="okhttp3.internal.platform.PlatformInitializer" android:value="androidx.startup"/>
+        </provider>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.SystemAlarmService"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_job_service_default" android:exported="true" android:name="androidx.work.impl.background.systemjob.SystemJobService" android:permission="android.permission.BIND_JOB_SERVICE"/>
+        <service android:directBootAware="false" android:enabled="@bool/enable_system_foreground_service_default" android:exported="false" android:name="androidx.work.impl.foreground.SystemForegroundService"/>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="false" android:name="androidx.work.impl.utils.ForceStopRunnable$BroadcastReceiver"/>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryChargingProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED"/>
+                <action android:name="android.intent.action.ACTION_POWER_DISCONNECTED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$BatteryNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_OKAY"/>
+                <action android:name="android.intent.action.BATTERY_LOW"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$StorageNotLowProxy">
+            <intent-filter>
+                <action android:name="android.intent.action.DEVICE_STORAGE_LOW"/>
+                <action android:name="android.intent.action.DEVICE_STORAGE_OK"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxy$NetworkStateProxy">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="false" android:exported="false" android:name="androidx.work.impl.background.systemalarm.RescheduleReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED"/>
+                <action android:name="android.intent.action.TIME_SET"/>
+                <action android:name="android.intent.action.TIMEZONE_CHANGED"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="@bool/enable_system_alarm_service_default" android:exported="false" android:name="androidx.work.impl.background.systemalarm.ConstraintProxyUpdateReceiver">
+            <intent-filter>
+                <action android:name="androidx.work.impl.background.systemalarm.UpdateProxies"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="true" android:name="androidx.work.impl.diagnostics.DiagnosticsReceiver" android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="androidx.work.diagnostics.REQUEST_DIAGNOSTICS"/>
+            </intent-filter>
+        </receiver>
+        <activity android:exported="false" android:name="com.acse.ottn.activity.WXActivity"/>
+        <activity android:excludeFromRecents="true" android:exported="true" android:launchMode="singleTop" android:name="com.acse.ottn.activity.AccessibiltyTsnPermissionGreenActivity" android:process=".LoadingActivity" android:screenOrientation="portrait" android:theme="@style/sdkTheme"/>
+        <activity android:excludeFromRecents="true" android:exported="true" android:launchMode="singleTop" android:name="com.acse.ottn.activity.AccessibiltyVivoPermissionGreenActivity" android:process=".LoadingActivity" android:screenOrientation="portrait" android:theme="@style/sdkTheme"/>
+        <activity android:excludeFromRecents="true" android:exported="true" android:launchMode="singleInstance" android:name="com.acse.ottn.activity.TransparentGreenActivity" android:process=".LoadingActivity" android:screenOrientation="portrait" android:theme="@style/MyTransparent"/>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:excludeFromRecents="true" android:exported="true" android:icon="@mipmap/ico_tab_icon" android:label="@string/process_name" android:launchMode="singleInstancePerTask" android:name="com.acse.ottn.activity.ExcessActivity" android:process=".LoadingActivity" android:screenOrientation="portrait" android:theme="@style/sdkTheme">
+            <intent-filter>
+                <action android:name="com.acse.activity.ExcessActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboard|keyboardHidden|orientation|screenSize" android:enabled="true" android:excludeFromRecents="true" android:exported="true" android:icon="@mipmap/ico_tab_icon" android:label="@string/process_name" android:launchMode="singleTop" android:name="com.acse.ottn.activity.SeedingLoadingActivity" android:process=".LoadingActivity" android:screenOrientation="portrait" android:taskAffinity="com.acse.ottn.activity" android:theme="@style/sdkTheme">
+            <intent-filter>
+                <action android:name="com.acse.activity.LoadingActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity android:excludeFromRecents="true" android:launchMode="singleTop" android:name="com.acse.ottn.activity.SeedWebViewActivity" android:process=".LoadingActivity" android:theme="@style/sdkTheme"/>
+        <receiver android:name="com.acse.ottn.receiver.HomeKeyReceiver"/>
+        <receiver android:description="@string/app_name" android:enabled="true" android:exported="true" android:name="com.acse.ottn.receiver.MyDeviceAdminReceiver" android:permission="android.permission.BIND_DEVICE_ADMIN">
+            <meta-data android:name="android.app.device_admin" android:resource="@xml/dcm_configure"/>
+        </receiver>
+        <service android:enabled="true" android:exported="true" android:name="com.acse.ottn.service.TransparentService" android:process=".LoadingActivity"/>
+        <service android:enabled="true" android:exported="true" android:name="com.acse.ottn.service.StartProcreeService" android:process=".LoadingActivity"/>
+        <service android:enabled="true" android:exported="true" android:name="com.acse.ottn.service.MainService" android:process=".LoadingActivity"/>
+        <service android:enabled="true" android:exported="true" android:name="com.acse.ottn.service.CountdownService" android:process=".LoadingActivity"/>
+        <service android:enabled="true" android:exported="true" android:name="com.acse.ottn.service.ExcessService" android:process=".LoadingActivity"/>
+        <service android:enabled="true" android:exported="true" android:name="com.acse.ottn.service.WebViewService" android:process=".LoadingActivity"/>
+        <service android:enabled="true" android:exported="true" android:name="com.acse.ottn.service.LjFirstService" android:process=".LoadingActivity"/>
+        <service android:enabled="true" android:exported="true" android:name="com.acse.ottn.service.CircleFlowService" android:process=".LoadingActivity"/>
+        <service android:enabled="true" android:exported="true" android:name="com.acse.ottn.service.ExcessiveService"/>
+        <service android:enabled="true" android:exported="true" android:name="com.acse.ottn.service.DemoService" android:process=".LoadingActivity"/>
+        <service android:name="com.snail.antifake.jni.EmulatorCheckService" android:process=":EmulatorCheckService"/>
+        <receiver android:directBootAware="false" android:enabled="true" android:exported="true" android:name="androidx.profileinstaller.ProfileInstallReceiver" android:permission="android.permission.DUMP">
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.INSTALL_PROFILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SKIP_FILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.SAVE_PROFILE"/>
+            </intent-filter>
+            <intent-filter>
+                <action android:name="androidx.profileinstaller.action.BENCHMARK_OPERATION"/>
+            </intent-filter>
+        </receiver>
+        <activity android:name="cn.bluemobi.dylan.uncaughtexception.activity.DefaultErrorActivity" android:process=":error_activity" android:theme="@android:style/Theme.Holo.Light"/>
+        <activity android:exported="true" android:name="cn.jpush.android.ui.PopWinActivity" android:theme="@style/JPushDialogStyle">
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="cn.jpush.android.ui.PopWinActivity"/>
+                <category android:name="com.bxkj.student"/>
+            </intent-filter>
+        </activity>
+        <activity android:configChanges="keyboardHidden|orientation" android:exported="true" android:name="cn.jpush.android.ui.PushActivity" android:theme="@android:style/Theme.NoTitleBar">
+            <intent-filter>
+                <action android:name="cn.jpush.android.ui.PushActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="com.bxkj.student"/>
+            </intent-filter>
+        </activity>
+        <service android:enabled="true" android:exported="false" android:name="cn.jpush.android.service.PushService" android:process=":pushcore">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.REGISTER"/>
+                <action android:name="cn.jpush.android.intent.REPORT"/>
+                <action android:name="cn.jpush.android.intent.PushService"/>
+                <action android:name="cn.jpush.android.intent.PUSH_TIME"/>
+            </intent-filter>
+        </service>
+        <receiver android:enabled="true" android:exported="false" android:name="cn.jpush.android.service.PushReceiver">
+            <intent-filter android:priority="1000">
+                <action android:name="cn.jpush.android.intent.NOTIFICATION_RECEIVED_PROXY"/>
+                <category android:name="com.bxkj.student"/>
+            </intent-filter>
+        </receiver>
+        <receiver android:exported="false" android:name="cn.jpush.android.service.AlarmReceiver"/>
+        <receiver android:exported="false" android:name="cn.jpush.android.service.SchedulerReceiver"/>
+        <provider android:authorities="com.bxkj.student.DataProvider" android:exported="false" android:name="cn.jpush.android.service.DataProvider" android:process=":pushcore"/>
+        <activity android:exported="true" android:name="cn.jpush.android.service.JNotifyActivity" android:taskAffinity="" android:theme="@style/JPushTheme">
+            <intent-filter>
+                <action android:name="cn.jpush.android.intent.JNotifyActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="com.bxkj.student"/>
+            </intent-filter>
+        </activity>
+        <activity android:exported="true" android:name="cn.android.service.JTransitActivity" android:taskAffinity="" android:theme="@style/JPushTheme">
+            <intent-filter>
+                <action android:name="cn.android.service.JTransitActivity"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="com.bxkj.student"/>
+            </intent-filter>
+        </activity>
+        <receiver android:exported="false" android:name="cn.jpush.android.asus.AsusPushMessageReceiver"/>
+        <meta-data android:name="JPUSH_CHANNEL" android:value="developer-default"/>
+        <meta-data android:name="JPUSH_APPKEY" android:value="371eb09af9255d557b1e697e"/>
+        <provider android:authorities="com.bxkj.student.jiguang.InitProvider" android:exported="false" android:name="cn.jpush.android.service.InitProvider" android:readPermission="com.bxkj.student.permission.JPUSH_MESSAGE" android:writePermission="com.bxkj.student.permission.JPUSH_MESSAGE"/>
+        <meta-data android:name="huawei_module_scankit_local" android:value="21200301"/>
+        <meta-data android:name="huawei_module_scankit_sdk_version" android:value="scanplus:2.12.0.301"/>
+        <meta-data android:name="com.huawei.hms.client.service.name:scanplus" android:value="scanplus:2.12.0.301"/>
+        <meta-data android:name="com.huawei.hms.min_api_level:scanplus:huawei_module_scankit" android:value="1"/>
+        <meta-data android:name="com.huawei.hms.min_api_level:scanplus:hmscore" android:value="1"/>
+        <activity android:configChanges="navigation|orientation|screenLayout|screenSize|smallestScreenSize|uiMode" android:launchMode="singleTask" android:name="com.huawei.hms.hmsscankit.ScanKitActivity"/>
+        <meta-data android:name="JCORE_VT" android:value="r5560"/>
+        <meta-data android:name="JCORE_MD5" android:value="1:556:5e8b72e3:314:r:"/>
+        <meta-data android:name="com.huawei.hms.client.service.name:dynamic-api" android:value="dynamic-api:1.0.24.300"/>
+        <meta-data android:name="com.huawei.hms.min_api_level:dynamic-api:huawei_module_dynamicloader" android:value="10"/>
+        <provider android:authorities="com.bxkj.student.MLInitializerProvider" android:exported="false" android:name="com.huawei.hms.mlsdk.common.provider.MLInitializerProvider"/>
+        <provider android:authorities="com.bxkj.student.AGCInitializeProvider" android:exported="false" android:name="com.huawei.agconnect.core.provider.AGConnectInitializeProvider"/>
+        <service android:exported="false" android:name="com.huawei.agconnect.core.ServiceDiscovery"/>
+        <provider android:authorities="com.bxkj.student.CP" android:exported="false" android:initOrder="2147483647" android:name="com.SecShell.SecShell.CP"/>
+    </application>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+</manifest>
