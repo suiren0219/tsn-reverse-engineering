@@ -11,6 +11,10 @@ local.properties
 *.code-workspace
 captures/
 
+# 07-spoof-detector 自带更严格的 .gitignore（排除 *.dex / *.apk / rev_* 等），
+# 该规则只作用于其子目录；此处显式豁免根目录下需要收录的逆向产物
+!/05-tsn-unshielded-dex/*.dex
+
 # Keys & secrets
 *.keystore
 *.jks
