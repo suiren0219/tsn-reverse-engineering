@@ -184,7 +184,13 @@ class MainActivity : ComponentActivity() {
                                 themeMode = themePreference.mode,
                                 onThemeModeChange = { themePreference.set(it) },
                                 onRequestPermission = { requestLocationThenStart() },
-                                onOpenLog = { tab = 1 }
+                                onOpenLog = { tab = 1 },
+                                onRunSelfCheck = {
+                                    controller.clearSelfCheck()
+                                    controller.runSelfCheck()
+                                    tab = 0
+                                },
+                                onClearSelfCheck = { controller.clearSelfCheck() }
                             )
                         }
 

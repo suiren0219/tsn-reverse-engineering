@@ -7,6 +7,7 @@ import com.example.spoofdet.model.LogEvent
 import com.example.spoofdet.model.Status
 import com.example.spoofdet.model.Tier
 import com.example.spoofdet.model.toLogEvent
+import com.example.spoofdet.redteam.AttackCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -234,6 +235,64 @@ class DetectionController(context: Context) {
         addLog(fresh.toLogEvent(System.currentTimeMillis()))
     }
 
+    /**
+     * 红队自检：把合成攻击样本灌进**真实检测管线**。
+     *
+     * 为什么这样做而不是写一个注入模块：
+     *   - 合成样本是纯 Location 对象，不涉及任何进程注入
+     *   - 走的是 [recomputeTier2] 同一条代码路径，测的是检测逻辑本身
+     *   - 不需要 root、不需要 LSPosed、不碰被测 App
+     *
+     * 产出：一组 CheckResult，标签上带 `[自检:xxx]` 前缀，
+     * 与真实检测结果并列展示，便于对比"检测器在伪造样本上是否报警"。
+     */
+    fun runSelfCheck() {
+        addLog(LogEvent.Level.INFO, "自检", "开始红队自检（合成样本）")
+
+        val cases = AttackCase.ALL
+        cases.forEach { case ->
+            // 同一路径：构造 tier2 结果，再打上样本标签
+            val tier2 = buildList {
+                add(mapTier2(Tier2Checks.checkCn0Grid(case.locations), "t2_cn0_grid", "CN0 与卫星数关系"))
+                add(mapTier2(Tier2Checks.checkSatelliteStaircase(case.locations), "t2_sat_staircase", "卫星数时间相关性"))
+                add(mapTier2(Tier2Checks.checkStaticAltAcc(case.locations), "t2_static_alt_acc", "海拔/精度稳定性"))
+                add(mapTier2(Tier2Checks.checkJitterAutocorrelation(case.locations), "t2_jitter_ac", "抖动惯性（AR 系数）"))
+                add(mapTier2(Tier2Checks.checkAccuracyConstants(case.locations), "t2_acc_constants", "Accuracy 字段构造痕迹"))
+                add(mapTier2(Tier2Checks.checkStepIntervalCV(case.stepTimesMs), "t2_step_cv", "步间隔变异系数"))
+                add(mapTier2(Tier2Checks.checkStepPeriodicity(case.stepTimesMs), "t2_step_period", "步间隔振荡性"))
+                add(mapTier2(Tier2Checks.checkGnssReceiverAlive(case.gnss), "t2_gnss_alive", "GNSS 接收机活性"))
+            }.map { it.copy(id = "sc_${case.name}_${it.id}", title = "[自检:${case.name}] ${it.title}") }
+
+            val hits = tier2.count { it.status == Status.DETECTED || it.status == Status.SUSPICIOUS }
+            val evaluated = tier2.count { it.hasConclusion }
+            addLog(
+                LogEvent.Level.INFO,
+                "自检",
+                "${case.tool}：命中 ${hits}/${evaluated}",
+                buildString {
+                    appendLine(case.note)
+                    append("样本 ${case.locations.size} 个 / 步数 ${case.stepTimesMs.size}")
+                }
+            )
+
+            // 追加到结果列表，标记 tier 仍为 TIER2 但 id 带 sc_ 前缀
+            _results.value = _results.value + tier2
+        }
+
+        addLog(
+            LogEvent.Level.INFO,
+            "自检",
+            "红队自检完成",
+            "共 ${cases.size} 组合成样本。对照组（honest-*）被判为异常即为误报。"
+        )
+    }
+
+    /** 清除自检追加的结果，只保留真实检测结果。 */
+    fun clearSelfCheck() {
+        _results.value = _results.value.filterNot { it.id.startsWith("sc_") }
+        addLog(LogEvent.Level.INFO, "自检", "已清除自检结果")
+    }
+
     private fun recomputeTier2(
         locations: List<Location>,
         steps: List<Long>,
@@ -262,11 +321,12 @@ class DetectionController(context: Context) {
             add(
                 mapTier2(
                     Tier2Checks.checkJitterAutocorrelation(locations),
-                    "t2_jitter_ac", "抖动自相关"
+                    "t2_jitter_ac", "抖动惯性（AR 系数）"
                 )
             )
             add(mapTier2(Tier2Checks.checkAccuracyConstants(locations), "t2_acc_constants", "Accuracy 字段构造痕迹"))
             add(mapTier2(Tier2Checks.checkStepIntervalCV(steps), "t2_step_cv", "步间隔变异系数"))
+            add(mapTier2(Tier2Checks.checkStepPeriodicity(steps), "t2_step_period", "步间隔振荡性"))
             add(mapTier2(Tier2Checks.checkGnssReceiverAlive(gnss), "t2_gnss_alive", "GNSS 接收机活性"))
         }
         publish(previousStatic + tier2)

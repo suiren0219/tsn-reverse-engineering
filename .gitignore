@@ -37,3 +37,20 @@ keystore.properties
 *.har
 *.pcap
 *.pcapng
+
+# 反编译产物：含第三方版权代码，绝不入库
+rev_*/
+jadx_*
+unshielded/
+fuckrun_src/
+tsn_py/
+
+# 分析对象的原始 APK / 样本，一律不提交
+*.apk
+*.apk.*
+*.zip
+*.tar.gz
+
+# Python 评测台缓存
+__pycache__/
+*.pyc

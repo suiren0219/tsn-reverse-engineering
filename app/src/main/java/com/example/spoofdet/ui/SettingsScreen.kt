@@ -46,7 +46,9 @@ fun SettingsScreen(
     themeMode: ThemeMode,
     onThemeModeChange: (ThemeMode) -> Unit,
     onRequestPermission: () -> Unit,
-    onOpenLog: () -> Unit
+    onOpenLog: () -> Unit,
+    onRunSelfCheck: () -> Unit = {},
+    onClearSelfCheck: () -> Unit = {}
 ) {
     val cs = MiuixTheme.colorScheme
     val context = LocalContext.current
@@ -114,6 +116,24 @@ fun SettingsScreen(
                     }
                 }
             }
+        }
+
+        // ---------------- 红队自检 ----------------
+        SectionCard("红队自检（合成样本）") {
+            InfoLine(
+                "原理",
+                "把按真实工具公式生成的 Location 灌进同样的检测管线，看是否会报警"
+            )
+            InfoLine("不含", "网络请求 / 账号 token / 人脸数据 / 进程注入")
+            InfoLine("样本", "AnyDoor、yinshibai、FuckRun + 2 组真实设备对照")
+
+            PillAction("运行自检（结果前缀：[自检:xxx]）", onRunSelfCheck)
+            PillAction("清除自检结果", onClearSelfCheck)
+
+            Hint(
+                "对照组（honest-*）被判为异常即为误报。自检结果只在本 App 内展示，" +
+                        "不会写入日志页的历史记录，也不参与真实检测的判定。"
+            )
         }
 
         // ---------------- 关于 ----------------

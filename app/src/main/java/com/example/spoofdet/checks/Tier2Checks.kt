@@ -126,33 +126,43 @@ object Tier2Checks {
             )
         }
 
-        // 统计连续相同 satellite 值的游程
-        val runs = mutableListOf<Int>()
-        var cur = rows[0].second
-        var len = 1
+        // 用**时长**而不是采样数衡量游程。
+        //
+        // 原实现用 maxRun >= 5 判弱信号，但真实设备在 1Hz 采样下
+        // 卫星数恒定 5~10 个点是常态（同一批卫星持续被跟踪），
+        // 这条阈值会在真机上稳定误报（评测台实测对照样本触发 0.3）。
+        //
+        // 真正的判别量是时长：AnyDoor 用 (time/20000) 做 hash 输入，
+        // 卫星数每 20 秒才变一次；真实接收机通常每 1~5 秒就有颗星进出。
+        val runsMs = mutableListOf<Long>()
+        var runStart = rows[0].first
+        var curSat = rows[0].second
         for (i in 1 until rows.size) {
-            if (rows[i].second == cur) len++ else { runs += len; cur = rows[i].second; len = 1 }
+            if (rows[i].second != curSat) {
+                runsMs += rows[i].first - runStart
+                curSat = rows[i].second
+                runStart = rows[i].first
+            }
         }
-        runs += len
-        val maxRun = runs.maxOrNull() ?: 0
-        val avg = rows.map { it.second }.average()
+        runsMs += rows[rows.size - 1].first - runStart
+        val maxRunSec = (runsMs.maxOrNull() ?: 0L) / 1000.0
 
         // 同时位置应该在移动，否则"不动"本身正常
         val moved = gpsSamples.map { it.latitude }.let { it.maxOrNull()!! - it.minOrNull()!! } +
                 gpsSamples.map { it.longitude }.let { it.maxOrNull()!! - it.minOrNull()!! }
         val s = when {
-            moved == 0.0 -> 0.0               // 没动，卫星数不变是正常的
-            maxRun >= rows.size * 0.5 -> 0.6  // 位置在变，卫星数却长时间不变
-            maxRun >= 5 -> 0.3
+            moved == 0.0 -> 0.0                // 没动，卫星数不变是正常的
+            maxRunSec >= 15.0 -> 0.6           // 15s 以上不变：接近 20s 刷新周期
+            maxRunSec >= 10.0 -> 0.3
             else -> 0.0
         }
         return MyResult(
             SimpleCheck(
                 id = "t2_sat_staircase", title = "卫星数时间相关性", score = s,
                 summary = "卫星数时间相关性",
-                evidence = "最长连续相同 satellites 游程=$maxRun/${rows.size}, 均值=${"%.1f".format(avg)}, 位置变动=${
-                    "%.6f".format(moved)
-                }"
+                evidence = "最长连续相同 satellites 持续 ${"%.0f".format(maxRunSec)}s" +
+                        "（${rows.size} 个样本）, 均值=${"%.1f".format(rows.map { it.second }.average())}, " +
+                        "位置变动=${"%.6f".format(moved)}"
             ), skipped = false
         )
     }
@@ -334,35 +344,50 @@ object Tier2Checks {
             // 近似等距投影
             doubleArrayOf(lng * 111320.0 * cos(latRad), lat * 111320.0)
         }
+
+        // 直接估计 AR(1) 系数 φ，而不是算增量的滞后自相关。
+        //
+        // 原实现算的是「位置增量」的滞后 1 自相关，并判断 |ac| < 0.15 为可疑，
+        // 方向是反的。推导：位置噪声 x_t = φ·x_{t-1} + ε，
+        // 增量 s_t = x_t - x_{t-1} = ε_t + (φ-1)·x_{t-1}，于是
+        //   φ = 0（逐点独立抖动）  → s 是 MA(1)，滞后1自相关 ≈ -0.5
+        //   φ → 1（接收机环路积分） → s 趋近白噪声，自相关 ≈ 0
+        // 也就是说自相关**越负越像伪造**，原判据恰好把真机判成可疑。
+        // 评测台实测：原判据下对照组误报 20/20，AnyDoor 漏报 20/20。
+        //
+        // 对 AR(1) 有 Var(step) = 2(1-φ)·Var(pos)，
+        // 因此 φ = 1 - Var(step) / (2·Var(pos))。该估计对样本量不敏感且无偏。
         val steps = (1 until xy.size).map { i ->
             doubleArrayOf(xy[i][0] - xy[i - 1][0], xy[i][1] - xy[i - 1][1])
         }
-        val mean = steps.map { it[0] to it[1] }.let {
-            val mx = steps.map { s -> s[0] }.average()
-            val my = steps.map { s -> s[1] }.average()
-            steps.map { s -> doubleArrayOf(s[0] - mx, s[1] - my) }
+
+        fun variance(vals: List<Double>): Double {
+            if (vals.isEmpty()) return 0.0
+            val m = vals.average()
+            return vals.sumOf { (it - m) * (it - m) } / vals.size
         }
-        // 滞后 1 的自相关（对 x、y 分量分别计算后取平均）
-        val ac = listOf(0, 1).let { comps ->
-            comps.map { c ->
-                val a = mean.subList(0, mean.size - 1).map { it[c] }
-                val b = mean.subList(1, mean.size).map { it[c] }
-                val num = a.zip(b).sumOf { (p, q) -> p * q }
-                val den = sqrt(a.sumOf { it * it } * b.sumOf { it * it })
-                if (den == 0.0) 0.0 else num / den
-            }.average()
+
+        val varPos = (variance(xy.map { it[0] }) + variance(xy.map { it[1] })) / 2
+        val varStep = (variance(steps.map { it[0] }) + variance(steps.map { it[1] })) / 2
+        if (varPos <= 1e-9) {
+            return MyResult.skip("位置方差接近 0，无法估计抖动惯性")
         }
-        // 独立随机序列 ac≈0；带惯性过程 ac 明显 > 0
+
+        val phi = 1.0 - varStep / (2.0 * varPos)
+
+        // 真实接收机跟踪环路时间常数约 1~3s，1Hz 采样下 φ ∈ [0.5, 0.9]。
+        // 逐点独立伪造的 φ ≈ 0。评测台两组实测区间几乎不重叠。
         val s = when {
-            abs(ac) < 0.15 -> 0.55
-            abs(ac) < 0.25 -> 0.3
+            phi < 0.15 -> 0.6
+            phi < 0.30 -> 0.3
             else -> 0.0
         }
         return MyResult(
             SimpleCheck(
-                id = "t2_jitter_ac", title = "抖动自相关", score = s,
-                summary = "抖动自相关",
-                evidence = "滞后1自相关=${"%.3f".format(ac)}（真实 GPS 通常明显 > 0.25，独立随机 ≈ 0）"
+                id = "t2_jitter_ac", title = "抖动惯性（AR 系数）", score = s,
+                summary = "抖动惯性",
+                evidence = "估计 φ=${"%.3f".format(phi)}" +
+                        "（真实 GPS 跟踪环路通常 0.5~0.9，逐点独立伪造 ≈ 0；φ<0.3 视为可疑）"
             ), skipped = false
         )
     }
@@ -435,6 +460,10 @@ object Tier2Checks {
 
         // 真人跑步/走路 stride interval CV 一般在 2%~8%；
         // 过低说明是定时器，过高说明是纯随机。
+        //
+        // 但这一项对 FuckRun 无效：它用正弦波 + ±15ms 抖动，
+        // 实测 CV≈0.05 正好落在真人区间。要抓它需要看**振荡性**，
+        // 即 [checkStepPeriodicity]。
         val s = when {
             cv < 0.015 -> 0.7
             cv < 0.025 -> 0.45
@@ -447,6 +476,62 @@ object Tier2Checks {
                 id = "t2_step_cv", title = "步间隔变异系数", score = s,
                 summary = "步间隔变异系数",
                 evidence = "n=${intervals.size}, 均值=${"%.0f".format(mean)}ms, CV=${"%.3f".format(cv)}（真人在 0.02~0.08）"
+            ), skipped = false
+        )
+    }
+
+    /**
+     * #8 步间隔的**振荡性**（针对 FuckRun 这类正弦波形伪造）。
+     *
+     * 为什么不能只看自相关峰：
+     *   真人步频的间隔漂移是随机游走（慢变），其自相关在短滞后上本来就高
+     *   （评测台实测 lag1~lag4 约 0.4~0.55），并且随滞后单调衰减、全程为正。
+     *   FuckRun 用约 4 秒周期的正弦调制，间隔序列的自相关呈**振荡**：
+     *   先穿过 0 变负（lag4~lag7 到 -0.7），再回升为正（lag10~lag12 到 +0.7）。
+     *
+     * 判别量取「自相关谷值是否穿零」：
+     *   真人   谷值 ≈ +0.2 ~ +0.3   （不穿零）
+     *   正弦   谷值 ≈ -0.5 ~ -0.8   （明显穿零）
+     *
+     * 这比看单一峰位稳健：峰位会随步频漂移，而"是否振荡"是波形本身的性质。
+     */
+    fun checkStepPeriodicity(stepTimestampsMs: List<Long>): MyResult {
+        if (stepTimestampsMs.size < 60) {
+            return MyResult.skip("步数样本不足 (${stepTimestampsMs.size}/60)")
+        }
+        val intervals = (1 until stepTimestampsMs.size)
+            .map { stepTimestampsMs[it] - stepTimestampsMs[it - 1] }
+            .filter { it in 200..2000 }
+            .map { it.toDouble() }
+        if (intervals.size < 50) return MyResult.skip("有效步间隔不足 (${intervals.size}/50)")
+
+        val mean = intervals.average()
+        val c = intervals.map { it - mean }
+        if (c.sumOf { it * it } < 1e-6) {
+            return MyResult.skip("步间隔方差为 0，无法判断周期性")
+        }
+
+        val acs = (1..12).map { lag ->
+            val a = c.subList(0, c.size - lag)
+            val b = c.subList(lag, c.size)
+            val num = a.zip(b).sumOf { (p, q) -> p * q }
+            val den = sqrt(a.sumOf { it * it } * b.sumOf { it * it })
+            if (den == 0.0) 0.0 else num / den
+        }
+        val minAc = acs.minOrNull() ?: 0.0
+        val maxAc = acs.maxOrNull() ?: 0.0
+
+        val s = when {
+            minAc <= -0.35 -> 0.6
+            minAc <= -0.20 -> 0.3
+            else -> 0.0
+        }
+        return MyResult(
+            SimpleCheck(
+                id = "t2_step_period", title = "步间隔振荡性", score = s,
+                summary = "步间隔振荡性",
+                evidence = "滞后1~12 自相关谷值=${"%.3f".format(minAc)} 峰值=${"%.3f".format(maxAc)}" +
+                        "（真人随机游走不穿零，谷值通常 >-0.2；正弦调制伪造呈振荡）"
             ), skipped = false
         )
     }
